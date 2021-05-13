@@ -114,8 +114,5 @@ Print.prototype = {
       return obj && typeof obj === 'object' && obj.nodeType === 1 && typeof obj.nodeName === 'string';
     }
 };
-const MyPlugin = {}
-MyPlugin.install = function (Vue, options) {
-  Vue.prototype.$print = Print
-}
-export default MyPlugin
+
+export default Print

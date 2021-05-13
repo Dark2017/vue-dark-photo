@@ -12,11 +12,43 @@ npm i viewPhoto
 ```
 # api
 
+## 属性
+
 | 属性值 |  类型 | 描述
 | --- | --- | ---
 | imgData | string | 图片地址(url)
 | imgName | string | 图片名称
 | ··· | ··· | ···
+
+## 事件
+| 事件名 |  说明 | 回调参数
+| --- | --- | ---
+| publish | 打印后的回调 | 打印的内容
+| ··· | ··· | ···
+
+# 示例
+
+## 调用方法打开 如果你只需简单使用
+
+```
+this.$VDPhoto.show({
+    imgData: "url",
+    imgName: '图片名'
+});
+
+```
+
+## 组件形式打开 如果你需要额外功能
+```
+<viewPhoto 
+    ref="viewPhoto"
+    :imgData='imgData'
+    :imgName='imgName'
+    @publish='publish'
+    ....
+/>
+
+```
 
 # 最后
 

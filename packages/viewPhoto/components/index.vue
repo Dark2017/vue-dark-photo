@@ -40,6 +40,7 @@
         <!--startprint-->
         <img
           class="img"
+          alt=""
           v-if="isImg"
           ref="imgBox"
           @mousedown="down"
@@ -53,6 +54,7 @@
         <iframe
           v-else
           :src="wordUrl"
+          title=""
           class="iframe"
           ref="imgBox"
           @mousedown="down"
@@ -70,8 +72,15 @@
 
 <script>
 import { downloadFileByURL } from "../../../utils/download";
+import { Tooltip, Dialog, Icon } from 'element-ui'
+import print from '../../../utils/print'
 export default {
   name: "viewDarkphoto",
+  components: {
+    'el-tooltip' : Tooltip,
+    'el-dialog' : Dialog,
+    'icon' : Icon
+  },
   props: {
     // 图片数据
     imgData: {
@@ -105,21 +114,11 @@ export default {
     show() {
       this.showBox = true;
     },
-    // 删除销毁
     destroy() {
-      this.$nextTick((_) => {
-        this.$destroy();
-        try {
-          this.$el && document.body.removeChild(this.$el);
-        } catch (e) {
-          console.log(e);
-        }
-      });
+      this.showBox = false
     },
     // 鼠标按下
     down(e) {
-      let dom = e.target;
-
       let downX = e.pageX;
 
       let downY = e.pageY;
@@ -128,9 +127,9 @@ export default {
 
       let prevDiy = this.activeImg.y;
 
-      window.onmousemove = (e) => {
-        let moveX = e.pageX;
-        let moveY = e.pageY;
+      window.onmousemove = (a) => {
+        let moveX = a.pageX;
+        let moveY = a.pageY;
 
         let diX = parseInt(moveX - downX);
 
@@ -140,12 +139,11 @@ export default {
 
         this.activeImg.y = diY + prevDiy;
 
-        // console.log(dom.offsetTop)
 
         return false;
       };
 
-      window.onmouseup = (e) => {
+      window.onmouseup = () => {
         window.onmousemove = window.onmouseup = null;
       };
 
@@ -207,10 +205,11 @@ export default {
     // 打印
     publish() {
       if (this.isImg) {
-        this.$print(this.$refs.imgBox);
+        print(this.$refs.imgBox);
       } else {
-        this.$message.warning("请下载后打印");
+        console.log("请下载后打印");
       }
+      this.$emit('publish', this.$refs.imgBox)
     },
   },
   computed: {

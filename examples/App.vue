@@ -1,18 +1,42 @@
 <template>
   <div id="app">
-    <button @click="show">打开图片</button>
+    <button @click="show1">组件形式打开</button>
+    <button @click="show2">调用方法打开</button>
+    <viewPhoto 
+      ref="viewPhoto"
+      :imgData='imgData'
+      :imgName='imgName'
+      @publish='publish'
+    ></viewPhoto>
   </div>
 </template>
 
 <script>
+import viewPhoto from '../packages/viewPhoto/components'
 export default {
+  components: {
+    viewPhoto
+  },
+  data() {
+    return {
+      imgData: require('../public/logo.png'),
+      imgName: '图片名'
+    }
+  },
   methods: {
-    show() {
-      this.$ffViewPhoto.show({
-        // 图片数据
-        imgData: "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1694681277,1453280371&fm=26&gp=0.jpg",
+    show1() {
+      this.$refs.viewPhoto.show()
+    },
+    show2() {
+      this.$VDPhoto.show({
+        imgData: require('../public/logo.png'),
         imgName: '图片名'
       });
+    },
+    // 打印回调
+    publish(val) {
+      // do somethings ...
+      console.log(val,'--val--');
     }
   }
 }
