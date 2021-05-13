@@ -6,10 +6,10 @@
  */
 import component from './components'
 // 定义插件对象
-const ComponentBox = {}
+const viewDarkphoto = {}
 
 // vue的install方法，用于定义vue插件
-ComponentBox.install = (Vue, opt) => {
+viewDarkphoto.install = (Vue, opt) => {
   const ComponentBoxInstance = Vue.extend(component)
 
   let currentComponentBox
@@ -36,5 +36,7 @@ ComponentBox.install = (Vue, opt) => {
     }
   }
 }
-
-export default ComponentBox
+if (typeof window !== 'undefined' && window.Vue) {
+  viewDarkphoto.install(window.Vue)
+}
+export default viewDarkphoto

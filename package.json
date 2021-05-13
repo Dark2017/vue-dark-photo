@@ -1,8 +1,8 @@
 {
-  "name": "view-photo",
-  "version": "0.1.0",
-  "private": true,
-  "author": "DarkLai",
+  "name": "vue-dark-photo",
+  "version": "0.1.1",
+  "private": false,
+  "author": "laijianghao",
   "repository": {
     "type": "git",
     "url": "https://github.com/Dark2017/view-photo.git"
@@ -12,7 +12,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "lib": "vue-cli-service build --target lib --name view-photo --dest lib packages/viewPhoto/index.js"
+    "lib": "vue-cli-service build --target lib --name vue-view-photo --dest lib packages/viewPhoto/index.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",

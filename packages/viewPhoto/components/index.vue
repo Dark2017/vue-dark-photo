@@ -71,7 +71,7 @@
 <script>
 import { downloadFileByURL } from "../../../utils/download";
 export default {
-  name: "ViewPhoto",
+  name: "viewDarkphoto",
   props: {
     // 图片数据
     imgData: {
