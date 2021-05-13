@@ -1,24 +1,12 @@
 # view-photo
 
-## Project setup
+- 基于 vue 2.x + element-ui 开发的预览图片组件
+- 支持 放大、缩小、复原、下载、打印等功能
+- 支持在线预览pdf、word等文档
+
+# 安装使用说明
+
 ```
-npm install
+npm i viewPhoto
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
