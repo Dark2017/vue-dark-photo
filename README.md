@@ -1,23 +1,67 @@
 # view-photo
 
-- 基于 element-ui 开发的预览图片组件
+- 基于 element-ui2.x 开发的预览图片组件
 - 支持 放大、缩小、复原、下载、打印等功能
 - 支持在线预览pdf、word等文档
 - 暂时只支持jpg、png格式的图片
+- 继承 el-dialog 等组件的属性事件等
 
 # 安装使用说明
 
 ```
-npm i viewPhoto
+npm i vue-dark-photo
+
+// 在入口（main.js）中引入并挂载
+import VDPhoto from 'vue-dark-photo'
+
+Vue.use(VDPhoto)
+
+
 ```
+# 示例
+
+## 调用全局方法打开(适合简单使用)
+
+```
+this.$VDPhoto.show({
+    imgData: "url",
+    imgName: '图片名',
+    title: 'title',
+});
+
+```
+
+## 组件形式打开(适合需要额外功能)
+```
+<VDPhoto 
+    ref="VDPhoto"
+    :imgData='imgData'
+    :imgName='imgName'
+    :title='title'
+    @publish='publish'
+    ....
+/>
+
+```
+
 # api
+
+## 注意
+- el-dialog的属性及方法等也可以使用具体可移至：https://element.eleme.cn/#/zh-CN/component/dialog
+- 该组件中visible属性建议不要使用以免产生不必要的BUG，通过this.$refs.VDPhoto.show()来打开组件
+
+
+
+
 
 ## 属性
 
-| 属性值 |  类型 | 描述
+| 属性值 |  类型 | 描述 | 默认值 | 
 | --- | --- | ---
-| imgData | string | 图片地址(url)
-| imgName | string | 图片名称
+| imgData | string | 图片地址(url) | -
+| imgName | string | 图片名称 | -
+| title | string | 标题 | -
+| width | string | 弹窗宽度 | 50%
 | ··· | ··· | ···
 
 ## 事件
@@ -26,29 +70,19 @@ npm i viewPhoto
 | publish | 打印后的回调 | 打印的内容
 | ··· | ··· | ···
 
-# 示例
+## 方法
+| 方法名 |  说明 | 
+| --- | --- | 
+| show | 打开photo | 
+| ··· | ··· | 
 
-## 调用方法打开 如果你只需简单使用
+## 插槽
+| 插槽名 |  说明 | 
+| --- | --- | 
+| - | 图片下面的内容 | 
+| ··· | ··· | 
 
-```
-this.$VDPhoto.show({
-    imgData: "url",
-    imgName: '图片名'
-});
 
-```
-
-## 组件形式打开 如果你需要额外功能
-```
-<viewPhoto 
-    ref="viewPhoto"
-    :imgData='imgData'
-    :imgName='imgName'
-    @publish='publish'
-    ....
-/>
-
-```
 
 # 最后
 
@@ -56,6 +90,6 @@ this.$VDPhoto.show({
 - 欢迎来到我的博客，希望能对你有所帮助
 - 掘金：https://juejin.cn/user/2339399368751325/posts
 - csdn：https://blog.csdn.net/weixin_44083712?spm=1010.2135.3001.5343
-- csdn | 掘金 | 知乎 同名： 饼干_
+- csdn | 掘金 | 知乎 同名： 饼干_  或  饼干 
 
 

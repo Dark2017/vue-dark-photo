@@ -1,11 +1,17 @@
 <!--
  * @Author: DarkLai
  * @Date: 2020-11-13 17:45:57
- * @Description : viewPhoto 组件
+ * @Description : VDPhoto 组件
 -->
 <template>
   <div>
-    <el-dialog :visible="showBox" @close="destroy">
+    <el-dialog
+      :visible="showBox"
+      @close="destroy"
+      v-bind="$attrs"
+      v-on="$listeners"
+    >
+      <div slot="title" class="title">{{ title }}</div>
       <section class="header-photo" slot="footer">
         <div class="head-content">
           <div class="tools-wrap">
@@ -64,6 +70,7 @@
             }) scale(${activeImg.scale}) rotate(${activeImg.rotate}deg)`,
           }"
         ></iframe>
+        <slot></slot>
         <!--endprint-->
       </section>
     </el-dialog>
@@ -71,28 +78,31 @@
 </template>
 
 <script>
-import { downloadFileByURL } from "../../../utils/download";
-import { Tooltip, Dialog, Icon } from 'element-ui'
-import print from '../../../utils/print'
+import { downloadFileByURL } from "./utils/download";
+import { Tooltip, Dialog, Icon } from "element-ui";
+import print from "./utils/print";
 export default {
-  name: "viewDarkphoto",
+  name: "VDPhoto",
   components: {
-    'el-tooltip' : Tooltip,
-    'el-dialog' : Dialog,
-    'icon' : Icon
+    "el-tooltip": Tooltip,
+    "el-dialog": Dialog,
+    icon: Icon,
   },
   props: {
     // 图片数据
     imgData: {
       type: String,
-      default() {
-        return "";
-      },
+      default: "",
     },
     // 图片名
     imgName: {
       type: String,
-      default: null,
+      default: "",
+    },
+    // 标题
+    title: {
+      type: String,
+      default: "",
     }
   },
   data() {
@@ -115,7 +125,7 @@ export default {
       this.showBox = true;
     },
     destroy() {
-      this.showBox = false
+      this.showBox = false;
     },
     // 鼠标按下
     down(e) {
@@ -138,7 +148,6 @@ export default {
         this.activeImg.x = diX + prevDix;
 
         this.activeImg.y = diY + prevDiy;
-
 
         return false;
       };
@@ -209,7 +218,7 @@ export default {
       } else {
         console.log("请下载后打印");
       }
-      this.$emit('publish', this.$refs.imgBox)
+      this.$emit("publish", this.$refs.imgBox);
     },
   },
   computed: {
@@ -239,7 +248,11 @@ export default {
 };
 </script>
 
-<style scoped lang="less">
+
+<style lang="less" scoped>
+.title {
+  text-align: center;
+}
 .header-photo {
   width: 100%;
   background: #fff;
