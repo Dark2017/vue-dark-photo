@@ -79,14 +79,13 @@
 
 <script>
 import { downloadFileByURL } from "./utils/download";
-import { Tooltip, Dialog, Icon } from "element-ui";
+import { Tooltip, Dialog } from "element-ui";
 import print from "./utils/print";
 export default {
   name: "VDPhoto",
   components: {
     "el-tooltip": Tooltip,
-    "el-dialog": Dialog,
-    icon: Icon,
+    "el-dialog": Dialog
   },
   props: {
     // 图片数据

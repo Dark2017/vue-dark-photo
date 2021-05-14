@@ -1,11 +1,11 @@
 {
   "name": "vue-dark-photo",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "private": false,
   "author": "laijianghao",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Dark2017/view-photo.git"
+    "url": "https://github.com/Dark2017/vue-dark-photo.git"
   },
   "license": "MIT",
   "main": "lib/vue-dark-photo.umd.min.js",
