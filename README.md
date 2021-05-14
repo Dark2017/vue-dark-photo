@@ -57,7 +57,7 @@ this.$VDPhoto.show({
 ## 属性
 
 | 属性值 |  类型 | 描述 | 默认值 | 
-| --- | --- | ---
+| --- | --- | --- | ---
 | imgData | string | 图片地址(url) | -
 | imgName | string | 图片名称 | -
 | title | string | 标题 | -
