@@ -1,3 +1,7 @@
+# 先上效果图
+
+![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f5c17fd190f742c8adbe768f3f58d454~tplv-k3u1fbpfcp-watermark.image)
+
 # vue-dark-photo
 
 - 基于 element-ui2.x 开发的预览图片组件
@@ -52,14 +56,6 @@ this.$VDPhoto.show({
 
 # api
 
-## 注意
-- el-dialog的属性及方法等也可以使用具体可移至：https://element.eleme.cn/#/zh-CN/component/dialog
-- 该组件中visible属性建议不要使用以免产生不必要的BUG，通过this.$refs.VDPhoto.show()来打开组件
-
-
-
-
-
 ## 属性
 
 | 属性值 |  类型 | 描述 | 默认值 | 
@@ -89,6 +85,9 @@ this.$VDPhoto.show({
 | ··· | ··· | 
 
 
+## 注意
+- el-dialog的属性及方法等也可以使用具体可移至：https://element.eleme.cn/#/zh-CN/component/dialog
+- 该组件中visible属性建议不要使用以免产生不必要的BUG，通过this.$refs.VDPhoto.show()来打开组件
 
 # 最后
 
