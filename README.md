@@ -6,7 +6,8 @@
 - 暂时只支持jpg、png格式的图片
 - 继承 el-dialog 等组件的属性事件等
 - 适合使用了element-ui的项目
-
+- GitHub地址：https://github.com/Dark2017/vue-dark-photo.git
+- 
 # 安装使用说明
 
 ```
