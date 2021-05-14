@@ -1,4 +1,4 @@
-# view-photo
+# vue-dark-photo
 
 - 基于 element-ui2.x 开发的预览图片组件
 - 支持 放大、缩小、复原、下载、打印等功能
@@ -62,7 +62,7 @@ this.$VDPhoto.show({
 ## 属性
 
 | 属性值 |  类型 | 描述 | 默认值 | 
-| --- | --- | --- 
+| --- | --- | --- | ---
 | imgData | string | 图片地址(url) | -
 | imgName | string | 图片名称 | -
 | title | string | 标题 | -
