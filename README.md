@@ -5,6 +5,7 @@
 - 支持在线预览pdf、word等文档
 - 暂时只支持jpg、png格式的图片
 - 继承 el-dialog 等组件的属性事件等
+- 适合使用了element-ui的项目
 
 # 安装使用说明
 
@@ -13,6 +14,10 @@ npm i vue-dark-photo
 
 // 在入口（main.js）中引入并挂载
 import VDPhoto from 'vue-dark-photo'
+// 引入vue-dark-photo 样式
+import 'vue-dark-photo/lib/vue-dark-photo.css'
+// 引入element 样式
+import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.use(VDPhoto)
 
@@ -57,7 +62,7 @@ this.$VDPhoto.show({
 ## 属性
 
 | 属性值 |  类型 | 描述 | 默认值 | 
-| --- | --- | ---
+| --- | --- | --- 
 | imgData | string | 图片地址(url) | -
 | imgName | string | 图片名称 | -
 | title | string | 标题 | -

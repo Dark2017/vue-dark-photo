@@ -3,7 +3,7 @@
     <button @click="show1">组件形式打开</button>
     <button @click="show2">调用方法打开</button>
     <VDPhoto 
-      ref="viewPhoto"
+      ref="VDPhoto"
       :imgData='imgData'
       :imgName='imgName'
       @publish='publish'
@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     show1() {
-      this.$refs.viewPhoto.show()
+      this.$refs.VDPhoto.show()
     },
     show2() {
       this.$VDPhoto.show({
