@@ -298,6 +298,7 @@ export default {
 
 .content {
   overflow: hidden;
+  text-align: center;
   .img {
     max-height: 100%;
     width: 100%;
@@ -307,5 +308,11 @@ export default {
     width: 100%;
     min-height: 500px;
   }
+}
+</style>
+<style media="print">
+@page {
+    size: auto;  /* auto is the initial value */
+    margin: 0mm; /* this affects the margin in the printer settings */
 }
 </style>
