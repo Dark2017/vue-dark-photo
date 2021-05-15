@@ -29,7 +29,8 @@ export default {
     show2() {
       this.$VDPhoto.show({
         imgData: require('../public/logo.png'),
-        imgName: '图片名'
+        imgName: '图片名',
+        title: ''
       });
     },
     // 打印回调
