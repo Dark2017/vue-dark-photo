@@ -26,6 +26,12 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.use(VDPhoto)
 
+```
+
+```
+//通过cdn引入 以下链接
+https://cdn.jsdelivr.net/npm/vue-dark-photo@{verison}/lib/vue-dark-photo.umd.min.js
+https://cdn.jsdelivr.net/npm/vue-dark-photo@{verison}/lib/vue-dark-photo.css
 
 ```
 # 示例
