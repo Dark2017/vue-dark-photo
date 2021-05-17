@@ -1,6 +1,11 @@
 # 先上效果图
 
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f5c17fd190f742c8adbe768f3f58d454~tplv-k3u1fbpfcp-watermark.image)
+![demo1.gif](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/719521e172f34d75975eb640fa0b841c~tplv-k3u1fbpfcp-watermark.image)
+
+
+![demo2.gif](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3a8177352ca9441b82111f1b71fc30ab~tplv-k3u1fbpfcp-watermark.image)
+
+![demo3.gif](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/71751a2b6001473a966da349dcc01791~tplv-k3u1fbpfcp-watermark.image)
 
 # vue-dark-photo
 
