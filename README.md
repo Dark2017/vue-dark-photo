@@ -13,7 +13,7 @@
 - GitHub地址：https://github.com/Dark2017/vue-dark-photo.git
 
 # 安装使用说明
-
+[![vue-dark-photo](https://nodei.co/npm/vue-dark-photo.png)](https://npmjs.com/package/vue-dark-photo)
 ```
 npm i vue-dark-photo
 
