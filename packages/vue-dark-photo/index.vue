@@ -5,12 +5,7 @@
 -->
 <template>
   <div>
-    <el-dialog
-      :visible="showBox"
-      @close="destroy"
-      v-bind="$attrs"
-      v-on="$listeners"
-    >
+    <el-dialog :visible="showBox" @close="destroy" v-bind="$attrs" v-on="$listeners">
       <div slot="title" class="title">{{ title }}</div>
       <section class="header-photo" slot="footer">
         <div class="head-content">
@@ -29,13 +24,10 @@
                 <span @click="rotate" class="el-icon-refresh"></span>
               </el-tooltip>
               <el-tooltip effect="dark" content="下载">
-                <span
-                  @click="downloadFile(imgData)"
-                  class="el-icon-download"
-                ></span>
+                <span @click="downloadFile(imgData)" class="el-icon-download"></span>
               </el-tooltip>
               <el-tooltip effect="dark" content="打印">
-                <span class="el-icon-printer" @click="publish"> </span>
+                <span class="el-icon-printer" @click="publish"></span>
               </el-tooltip>
             </div>
           </div>
@@ -46,7 +38,7 @@
         <!--startprint-->
         <img
           class="img"
-          alt=""
+          alt
           v-if="isImg"
           ref="imgBox"
           @mousedown="down"
@@ -60,7 +52,7 @@
         <iframe
           v-else
           :src="wordUrl"
-          title=""
+          title
           class="iframe"
           ref="imgBox"
           @mousedown="down"
@@ -81,11 +73,12 @@
 import { downloadFileByURL } from "./utils/download";
 import { Tooltip, Dialog } from "element-ui";
 import print from "./utils/print";
+import { suffix_photo_list, suffix_wps_list } from "./utils/constart";
 export default {
   name: "VDPhoto",
   components: {
     "el-tooltip": Tooltip,
-    "el-dialog": Dialog
+    "el-dialog": Dialog,
   },
   props: {
     // 图片数据
@@ -102,7 +95,7 @@ export default {
     title: {
       type: String,
       default: "",
-    }
+    },
   },
   data() {
     return {
@@ -221,26 +214,24 @@ export default {
     },
   },
   computed: {
+    suffixName() {
+      return this.imgData
+        .substring(this.idx + 1, this.imgData.length)
+        .toLowerCase();
+    },
+    idx() {
+      return this.imgData.lastIndexOf(".");
+    },
     isImg() {
-      try {
-        // 截取文件类型
-        let idx = this.imgData.lastIndexOf(".");
-        let tmpName = this.imgData.substring(idx + 1, this.imgData.length);
-        if (tmpName == "png" || tmpName == "jpg") {
-          return true;
-        } else {
-          // 调用微软api 实现 在线预览 word文档
-          if (tmpName == "pdf") {
-            // pdf 无需调用
-            this.wordUrl = this.imgData;
-          } else {
-            this.wordUrl = `https://view.officeapps.live.com/op/view.aspx?src=${this.imgData}`;
-          }
-          return false;
-        }
-      } catch (error) {
-        console.log("捕捉：", error);
-        return false;
+      return suffix_photo_list[this.suffixName];
+    },
+  },
+  watch: {
+    wordUrl() {
+      if (suffix_wps_list[this.suffixName] === 5) {
+        this.wordUrl = this.imgData;
+      } else {
+        this.wordUrl = `https://view.officeapps.live.com/op/view.aspx?src=${this.imgData}`;
       }
     },
   },
@@ -312,7 +303,7 @@ export default {
 </style>
 <style media="print">
 @page {
-    size: auto;  /* auto is the initial value */
-    margin: 0mm; /* this affects the margin in the printer settings */
+  size: auto; /* auto is the initial value */
+  margin: 0mm; /* this affects the margin in the printer settings */
 }
 </style>

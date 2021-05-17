@@ -12,7 +12,7 @@
 - 基于 element-ui2.x 开发的预览图片组件
 - 支持 放大、缩小、复原、下载、打印等功能
 - 支持在线预览pdf、word等文档（这个功能后续可能会去掉）
-- 暂时只支持jpg、png格式的图片
+- 支持png、jpg、jpge、bmp、gif等常见格式
 - 继承 el-dialog 等组件的属性事件等
 - 适合使用了element-ui的项目
 - GitHub地址：https://github.com/Dark2017/vue-dark-photo.git

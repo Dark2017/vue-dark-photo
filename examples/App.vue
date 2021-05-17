@@ -17,7 +17,7 @@
 export default {
   data() {
     return {
-      imgData: require('../public/logo.png'),
+      imgData: require('../public/demo1.gif'),
       imgName: '图片名',
       width: '10px'
     }
