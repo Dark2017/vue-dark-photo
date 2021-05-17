@@ -11,6 +11,7 @@
       v-bind="$attrs"
       v-on="$listeners"
     >
+    <!-- <windows :visible="showBox" @close="destroy"> -->
       <div slot="title" class="title">{{ title }}</div>
       <section class="header-photo" slot="footer">
         <div class="head-content">
@@ -74,18 +75,21 @@
         <!--endprint-->
       </section>
     </el-dialog>
+    <!-- </windows> -->
   </div>
 </template>
 
 <script>
 import { downloadFileByURL } from "./utils/download";
 import { Tooltip, Dialog } from "element-ui";
+import windows from './windows'
 import print from "./utils/print";
 export default {
   name: "VDPhoto",
   components: {
     "el-tooltip": Tooltip,
-    "el-dialog": Dialog
+    "el-dialog": Dialog,
+    windows
   },
   props: {
     // 图片数据

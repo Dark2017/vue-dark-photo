@@ -2,6 +2,15 @@
   <div id="app">
     <button @click="show1">组件形式打开</button>
     <button @click="show2">调用方法打开</button>
+    <button @click="show3">弹窗组件</button>
+    <windows 
+      :visible.sync='visible' 
+      @close='close'
+      :title="title"
+    >
+      <div>111111</div>
+      <div slot="footer">111111</div>
+    </windows>
     <VDPhoto 
       ref="VDPhoto"
       :imgData='imgData'
@@ -14,12 +23,16 @@
 </template>
 
 <script>
+import windows from '../packages/vue-dark-photo/windows'
 export default {
+  components: { windows },
   data() {
     return {
       imgData: require('../public/logo.png'),
       imgName: '图片名',
-      width: '10px'
+      width: '10px',
+      visible: false,
+      title: "test"
     }
   },
   methods: {
@@ -32,6 +45,13 @@ export default {
         imgName: '图片名',
         title: ''
       });
+    },
+    show3() {
+      this.visible = true
+    },
+    close(val) {
+      console.log(val,'-val-');
+      this.visible = false
     },
     // 打印回调
     publish(val) {
