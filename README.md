@@ -11,14 +11,14 @@
 
 - 基于 element-ui2.x 开发的预览图片组件
 - 支持 放大、缩小、复原、下载、打印等功能
-- 支持在线预览pdf、word等文档
+- 支持在线预览pdf、word等文档（这个功能后续可能会去掉）
 - 暂时只支持jpg、png格式的图片
 - 继承 el-dialog 等组件的属性事件等
 - 适合使用了element-ui的项目
 - GitHub地址：https://github.com/Dark2017/vue-dark-photo.git
 
 # 安装使用说明
-
+[![vue-dark-photo](https://nodei.co/npm/vue-dark-photo.png)](https://npmjs.com/package/vue-dark-photo)
 ```
 npm i vue-dark-photo
 
@@ -31,6 +31,12 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.use(VDPhoto)
 
+```
+
+```
+//通过cdn引入 以下链接
+https://cdn.jsdelivr.net/npm/vue-dark-photo@{verison}/lib/vue-dark-photo.umd.min.js
+https://cdn.jsdelivr.net/npm/vue-dark-photo@{verison}/lib/vue-dark-photo.css
 
 ```
 # 示例
