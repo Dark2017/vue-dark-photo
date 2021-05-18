@@ -7,6 +7,9 @@
 
 ![demo3.gif](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/71751a2b6001473a966da349dcc01791~tplv-k3u1fbpfcp-watermark.image)
 
+# 演示地址
+https://dark2017.github.io/vue-dark-photo.github.io/
+
 # vue-dark-photo
 
 - 基于 element-ui2.x 开发的预览图片组件
