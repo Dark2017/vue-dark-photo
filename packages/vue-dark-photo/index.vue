@@ -292,11 +292,11 @@ export default {
   text-align: center;
   .img {
     max-height: 100%;
-    width: 100%;
+    max-width: 100%;
     margin: auto;
   }
   .iframe {
-    width: 100%;
+    max-width: 100%;
     min-height: 500px;
   }
 }
