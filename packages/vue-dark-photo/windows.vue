@@ -2,7 +2,7 @@
   <transition name="fade">
     <div v-show="visible">
       <div id="bg" ref="bg" class="bg" @click="close"></div>
-      <div @click="pop" ref="windows" class="windows">
+      <div ref="windows" class="windows">
         <div class="windows_header">
           <slot name="title" class="title">
             <span>{{ title }}</span>
