@@ -5,13 +5,13 @@
 -->
 <template>
   <div>
-    <el-dialog
+    <!-- <el-dialog
       :visible="showBox"
       @close="destroy"
       v-bind="$attrs"
       v-on="$listeners"
-    >
-    <!-- <windows :visible="showBox" @close="destroy"> -->
+    > -->
+    <windows :visible="showBox" @close="destroy">
       <div slot="title" class="title">{{ title }}</div>
       <section class="header-photo" slot="footer">
         <div class="head-content">
@@ -74,8 +74,8 @@
         <slot></slot>
         <!--endprint-->
       </section>
-    </el-dialog>
-    <!-- </windows> -->
+    <!-- </el-dialog> -->
+    </windows>
   </div>
 </template>
 
@@ -305,7 +305,7 @@ export default {
   text-align: center;
   .img {
     max-height: 100%;
-    width: 100%;
+    max-width: 100%;
     margin: auto;
   }
   .iframe {

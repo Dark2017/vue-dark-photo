@@ -7,9 +7,9 @@
           <slot name="title" class="title">
             <span>{{ title }}</span>
           </slot>
-          <button type="button" @click="close" class="header_button">
+          <!-- <button type="button" @click="close" class="header_button">
             <span class="icon-close el-icon-close"></span>
-          </button>
+          </button> -->
         </div>
         <div class="windows_body">
           <slot></slot>
@@ -99,7 +99,7 @@ export default {
 .windows{
   z-index: 2001;
   position: fixed;
-  background: #fff;
+  // background: #fff;
   margin: 50px auto 50px;
   left:0;
   right:0;
