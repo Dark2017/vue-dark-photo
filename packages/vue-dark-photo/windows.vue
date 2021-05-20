@@ -32,10 +32,6 @@ export default {
     title: {
       type: String,
       default: ''
-    },
-    appendToBody: {
-      type: Boolean,
-      default: true
     }
   },
   methods: {
@@ -61,7 +57,6 @@ export default {
 .windows{
   z-index: 2001;
   width: 50%;
-  // border: 1px dashed #fff;
   position: fixed;
   margin: 50px auto 50px;
   left: 0;
