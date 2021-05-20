@@ -15,7 +15,6 @@
           <slot name="footer"></slot>
         </div>
       </div>
-      
     </div>
   </transition>
 </template>
@@ -30,10 +29,6 @@ export default {
       type: Boolean,
       default: false
     },
-    width: {
-      type: String,
-      default: '50%'
-    },
     title: {
       type: String,
       default: ''
@@ -43,41 +38,11 @@ export default {
       default: true
     }
   },
-  mounted() {
-
-  },
   methods: {
-    pop() {
-
-    },
     close() {
       this.$emit('update:visible', false)
       this.$emit('close')
     }
-  },
-  computed: {
-    style() {
-      let style = {}
-      if(this.width) {
-        style.width = this.width
-      }
-      return style
-    }
-  },
-  watch: {
-    // visible(val) {
-    //   if(val) {
-    //     if(this.appendToBody) {
-    //       this.$nextTick(() => {
-    //         document.body.appendChild(this.$refs.bg)
-    //       })
-    //     }
-    //   } else {
-    //     setTimeout(() => {
-    //       document.body.removeChild(this.$refs.bg)
-    //     }, 150)
-    //   }
-    // }
   }
 }
 </script>

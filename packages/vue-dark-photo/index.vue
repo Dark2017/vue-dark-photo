@@ -243,7 +243,6 @@ abbr[title]{
 }
 .header-photo {
   width: 100%;
-  // background: #fff;
   .head-content {
     height: 43px;
     display: flex;
