@@ -4,89 +4,74 @@
  * @Description : VDPhoto 组件
 -->
 <template>
-  <div>
-    <!-- <el-dialog
-      :visible="showBox"
-      @close="destroy"
-      v-bind="$attrs"
-      v-on="$listeners"
-    > -->
-    <windows :visible="showBox" @close="destroy">
-      <div slot="title" class="title">{{ title }}</div>
-      <section class="header-photo" slot="footer">
-        <div class="head-content">
-          <div class="tools-wrap">
-            <div class="photo-tools">
-              <el-tooltip effect="dark" content="缩小">
-                <span @click="narrow" class="el-icon-zoom-out"></span>
-              </el-tooltip>
-              <el-tooltip effect="dark" content="实际大小">
-                <span @click="reduction" class="el-icon-view"></span>
-              </el-tooltip>
-              <el-tooltip effect="dark" content="放大">
-                <span @click="enlarge" class="el-icon-zoom-in"></span>
-              </el-tooltip>
-              <el-tooltip effect="dark" content="旋转">
-                <span @click="rotate" class="el-icon-refresh"></span>
-              </el-tooltip>
-              <el-tooltip effect="dark" content="下载">
-                <span @click="downloadFile(imgData)" class="el-icon-download"></span>
-              </el-tooltip>
-              <el-tooltip effect="dark" content="打印">
-                <span class="el-icon-printer" @click="publish"></span>
-              </el-tooltip>
-            </div>
+  <windows
+    :visible="showBox"
+    @close="destroy"
+    v-bind="$attrs"
+    v-on="$listeners"
+  >
+    <div slot="title" class="title">{{ title }}</div>
+    <section class="header-photo" slot="footer">
+      <div class="head-content">
+        <div class="tools-wrap">
+          <div class="photo-tools">
+            <abbr title="缩小">
+              <span @click="narrow" class="iconfont icon-zoom-in icon"></span>
+            </abbr>
+            <abbr title="实际大小">
+              <span @click="reduction" class="iconfont icon-fullscreen-expand icon-browse icon"></span>
+            </abbr>
+            <abbr title="放大">
+              <span @click="enlarge" class="iconfont icon-zoom-out icon"></span>
+            </abbr>
+            <abbr title="旋转">
+              <span @click="rotate" class="iconfont icon-refresh icon"></span>
+            </abbr>
+            <abbr title="下载">
+              <span
+                @click="downloadFile(imgData)"
+                class="iconfont icon-download icon"
+              ></span>
+            </abbr>            
+            <abbr title="打印">
+              <span class="iconfont icon-print icon" @click="publish"></span>
+            </abbr>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="content">
-        <!--startprint-->
-        <img
-          class="img"
-          alt
-          v-if="isImg"
-          ref="imgBox"
-          @mousedown="down"
-          :src="imgData"
-          :style="{
-            transform: `translateX(${activeImg.x + 'px'}) translateY(${
-              activeImg.y + 'px'
-            }) scale(${activeImg.scale}) rotate(${activeImg.rotate}deg)`,
-          }"
-        />
-        <iframe
-          v-else
-          :src="wordUrl"
-          title
-          class="iframe"
-          ref="imgBox"
-          @mousedown="down"
-          :style="{
-            transform: `translateX(${activeImg.x + 'px'}) translateY(${
-              activeImg.y + 'px'
-            }) scale(${activeImg.scale}) rotate(${activeImg.rotate}deg)`,
-          }"
-        ></iframe>
-        <slot></slot>
-        <!--endprint-->
-      </section>
-    <!-- </el-dialog> -->
-    </windows>
-  </div>
+    <section class="content">
+      <!--startprint-->
+      <img
+        class="img"
+        alt
+        v-if="isImg"
+        ref="imgBox"
+        @mousedown="down"
+        @mousewheel='mouseWheel'
+        :src="imgData"
+        :style="{
+          transform: `translateX(${activeImg.x + 'px'}) translateY(${
+            activeImg.y + 'px'
+          }) scale(${activeImg.scale}) rotate(${activeImg.rotate}deg)`,
+        }"
+      />
+      <slot></slot>
+      <!--endprint-->
+    </section>
+
+  </windows>
 </template>
 
 <script>
 import { downloadFileByURL } from "./utils/download";
-import { Tooltip, Dialog } from "element-ui";
-import windows from './windows'
+import windows from "./windows";
 import print from "./utils/print";
-import { suffix_photo_list, suffix_wps_list } from "./utils/constart";
+import { suffix_photo_list } from "./utils/constart";
 export default {
   name: "VDPhoto",
   components: {
-    "el-tooltip": Tooltip,
-    "el-dialog": Dialog,
     windows
   },
   props: {
@@ -104,7 +89,7 @@ export default {
     title: {
       type: String,
       default: "",
-    },
+    }
   },
   data() {
     return {
@@ -116,8 +101,6 @@ export default {
         y: 0,
         rotate: 0,
       },
-      // word url
-      wordUrl: "",
     };
   },
   methods: {
@@ -127,6 +110,7 @@ export default {
     },
     destroy() {
       this.showBox = false;
+      this.reduction()
     },
     // 鼠标按下
     down(e) {
@@ -198,6 +182,15 @@ export default {
 
       this.activeImg.rotate = rotate;
     },
+    // 滚轮缩放
+    mouseWheel(e) {
+      if(e.deltaY > 0) {
+        this.enlarge()
+      }
+      if(e.deltaY < 0) {
+        this.narrow()
+      }
+    },
     // 下载
     downloadFile(url) {
       let name;
@@ -235,26 +228,22 @@ export default {
       return suffix_photo_list[this.suffixName];
     },
   },
-  watch: {
-    wordUrl() {
-      if (suffix_wps_list[this.suffixName] === 5) {
-        this.wordUrl = this.imgData;
-      } else {
-        this.wordUrl = `https://view.officeapps.live.com/op/view.aspx?src=${this.imgData}`;
-      }
-    },
-  },
 };
 </script>
 
 
 <style lang="less" scoped>
+@import './style/index.css';
+abbr[title]{
+  border-bottom: none !important;
+  text-decoration: none !important;
+}
 .title {
   text-align: center;
 }
 .header-photo {
   width: 100%;
-  background: #fff;
+  // background: #fff;
   .head-content {
     height: 43px;
     display: flex;
@@ -264,26 +253,18 @@ export default {
 
   // 工具条
   .tools-wrap {
-    .base-tools {
-      height: inherit;
-      padding: 0 22px;
-
-      & > span {
-        font-size: 10px;
-        cursor: pointer;
-        -webkit-app-region: no-drag;
-
-        &:not(:nth-of-type(1)) {
-          margin-left: 30px;
-        }
-      }
-    }
-
     .photo-tools {
+      display: flex;
       height: inherit;
       padding: 0 22px;
 
-      & > span {
+      .icon{
+        color: #fff;
+        opacity: 0.5;
+        font-size: 26px;
+      }
+
+      & > abbr {
         font-size: 20px;
         cursor: pointer;
         -webkit-app-region: no-drag;
@@ -297,7 +278,7 @@ export default {
 }
 
 .content {
-  overflow: hidden;
+  // overflow: hidden;
   text-align: center;
   .img {
     max-height: 100%;

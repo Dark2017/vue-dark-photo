@@ -1,15 +1,12 @@
 <template>
-  <transition name="dialog-fade">
+  <transition name="fade">
     <div v-show="visible">
       <div id="bg" ref="bg" class="bg" @click="close"></div>
-      <div @click="pop" ref="windows" :style="style" class="windows">
+      <div @click="pop" ref="windows" class="windows">
         <div class="windows_header">
           <slot name="title" class="title">
             <span>{{ title }}</span>
           </slot>
-          <!-- <button type="button" @click="close" class="header_button">
-            <span class="icon-close el-icon-close"></span>
-          </button> -->
         </div>
         <div class="windows_body">
           <slot></slot>
@@ -18,16 +15,15 @@
           <slot name="footer"></slot>
         </div>
       </div>
+      
     </div>
   </transition>
 </template>
 <script>
 export default {
   name: 'windows',
-  components:{},
   data() {
-    return {
-    }
+    return {}
   },
   props: {
     visible: {
@@ -95,14 +91,16 @@ export default {
   opacity: 0.5;
   background: #000;
   z-index: 2000;
+  overflow: auto;
 }
 .windows{
   z-index: 2001;
+  width: 50%;
+  // border: 1px dashed #fff;
   position: fixed;
-  // background: #fff;
   margin: 50px auto 50px;
-  left:0;
-  right:0;
+  left: 0;
+  right: 0;
   .windows_header{
     padding: 20px 20px 10px;
     text-align: center;
@@ -122,6 +120,10 @@ export default {
   }
   .windows_footer{
     padding: 10px 20px 20px;
+    position: fixed;
+    bottom: 0;
+    right: 50%;
+    margin-right: -168px;
   }
 }
 

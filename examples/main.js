@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VDPhoto from '../packages'
-import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.config.productionTip = false
 
