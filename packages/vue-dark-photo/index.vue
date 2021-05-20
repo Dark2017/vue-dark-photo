@@ -35,6 +35,9 @@
             </abbr>            
             <abbr title="打印">
               <span class="iconfont icon-print icon" @click="publish"></span>
+            </abbr>            
+            <abbr title="压缩">
+              <span class="iconfont icon-print icon" @click="compress"></span>
             </abbr>
           </div>
         </div>
@@ -60,12 +63,12 @@
       <slot></slot>
       <!--endprint-->
     </section>
-
   </windows>
 </template>
 
 <script>
 import { downloadFileByURL } from "./utils/download";
+import { dealImage } from './utils/compress'
 import windows from "./windows";
 import print from "./utils/print";
 import { suffix_photo_list } from "./utils/constart";
@@ -100,7 +103,7 @@ export default {
         x: 0,
         y: 0,
         rotate: 0,
-      },
+      }
     };
   },
   methods: {
@@ -214,6 +217,17 @@ export default {
       }
       this.$emit("publish", this.$refs.imgBox);
     },
+    compress() {
+      let obj = {
+        width: '500px',
+        height: '500px',
+        quality: 0.7
+      }
+      dealImage(this.imgData, obj, (base) => {
+        this.downloadFile(base, '11')
+        console.log(base,'--base--');
+      })
+    }
   },
   computed: {
     suffixName() {

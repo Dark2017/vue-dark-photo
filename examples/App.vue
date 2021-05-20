@@ -2,15 +2,6 @@
   <div id="app">
     <button @click="show1">组件形式打开</button>
     <button @click="show2">调用方法打开</button>
-    <button @click="show3">弹窗组件</button>
-    <windows 
-      :visible.sync='visible' 
-      @close='close'
-      :title="title"
-    >
-      <div>111111</div>
-      <div slot="footer">111111</div>
-    </windows>
     <VDPhoto 
       ref="VDPhoto"
       :imgData='imgData'
@@ -23,12 +14,11 @@
 </template>
 
 <script>
-import windows from '../packages/vue-dark-photo/windows'
 export default {
-  components: { windows },
   data() {
     return {
       imgData: require('../public/demo1.gif'),
+      // imgData: 'https://dark2017.github.io/vue-dark-photo.github.io/img/logo.82b9c7a5.png',
       imgName: '图片名',
       width: '10px',
       visible: false,
