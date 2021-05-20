@@ -1,13 +1,21 @@
 # 先上效果图
 
-![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f5c17fd190f742c8adbe768f3f58d454~tplv-k3u1fbpfcp-watermark.image)
+![demo1.gif](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/719521e172f34d75975eb640fa0b841c~tplv-k3u1fbpfcp-watermark.image)
+
+
+![demo2.gif](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3a8177352ca9441b82111f1b71fc30ab~tplv-k3u1fbpfcp-watermark.image)
+
+![demo3.gif](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/71751a2b6001473a966da349dcc01791~tplv-k3u1fbpfcp-watermark.image)
+
+# 演示地址
+https://dark2017.github.io/vue-dark-photo.github.io/
 
 # vue-dark-photo
 
 - 基于 element-ui2.x 开发的预览图片组件
 - 支持 放大、缩小、复原、下载、打印等功能
-- 支持在线预览pdf、word等文档
-- 暂时只支持jpg、png格式的图片
+- 支持在线预览pdf、word等文档（这个功能后续可能会去掉）
+- 支持png、jpg、jpge、bmp、gif等常见格式
 - 继承 el-dialog 等组件的属性事件等
 - 适合使用了element-ui的项目
 - GitHub地址：https://github.com/Dark2017/vue-dark-photo.git
@@ -103,4 +111,10 @@ this.$VDPhoto.show({
 - csdn：https://blog.csdn.net/weixin_44083712?spm=1010.2135.3001.5343
 - csdn | 掘金 | 知乎 同名： 饼干_  或  饼干 
 
+# 更新日志
 
+- 2021-5-14 
+- 去除打印的页眉、页脚优化打印相关功能
+
+- 2021-5-17
+- 支持更多图片格式、代码优化

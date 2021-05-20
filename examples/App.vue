@@ -28,7 +28,7 @@ export default {
   components: { windows },
   data() {
     return {
-      imgData: 'https://dark2017.github.io/vue-dark-photo.github.io/img/demo1.03e26b03.gif',
+      imgData: require('../public/demo1.gif'),
       imgName: '图片名',
       width: '10px',
       visible: false,
