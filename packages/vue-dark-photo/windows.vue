@@ -65,19 +65,19 @@ export default {
     }
   },
   watch: {
-    visible(val) {
-      if(val) {
-        if(this.appendToBody) {
-          this.$nextTick(() => {
-            document.body.appendChild(this.$refs.bg)
-          })
-        }
-      } else {
-        setTimeout(() => {
-          document.body.removeChild(this.$refs.bg)
-        }, 150)
-      }
-    }
+    // visible(val) {
+    //   if(val) {
+    //     if(this.appendToBody) {
+    //       this.$nextTick(() => {
+    //         document.body.appendChild(this.$refs.bg)
+    //       })
+    //     }
+    //   } else {
+    //     setTimeout(() => {
+    //       document.body.removeChild(this.$refs.bg)
+    //     }, 150)
+    //   }
+    // }
   }
 }
 </script>
