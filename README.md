@@ -2,7 +2,6 @@
 
 ![demo1.gif](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/719521e172f34d75975eb640fa0b841c~tplv-k3u1fbpfcp-watermark.image)
 
-
 ![demo2.gif](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3a8177352ca9441b82111f1b71fc30ab~tplv-k3u1fbpfcp-watermark.image)
 
 ![demo3.gif](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/71751a2b6001473a966da349dcc01791~tplv-k3u1fbpfcp-watermark.image)
@@ -95,7 +94,9 @@ this.$VDPhoto.show({
 
 
 ## 注意
-- 该组件中visible属性建议不要使用以免产生不必要的BUG，通过this.$refs.VDPhoto.show()来打开组件
+- 通过this.$refs.VDPhoto.show()来打开组件
+- 演示地址及效果图为0.1.x版本
+
 
 # 最后
 
