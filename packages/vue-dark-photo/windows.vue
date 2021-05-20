@@ -82,8 +82,8 @@ export default {
     padding: 10px 20px 20px;
     position: fixed;
     bottom: 0;
-    right: 50%;
-    margin-right: -168px;
+    right: 0;
+    left: 0;
   }
 }
 
