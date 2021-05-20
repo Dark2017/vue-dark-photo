@@ -68,7 +68,7 @@ this.$VDPhoto.show({
 
 | 属性值 |  类型 | 描述 | 默认值 | 
 | --- | --- | --- | ---
-| imgData | string | 图片地址(url) | -
+| imgData | string | 图片地址(url) 相对路径需用require() | -
 | imgName | string | 图片名称 | -
 | title | string | 标题 | -
 | ··· | ··· | ···
@@ -95,7 +95,7 @@ this.$VDPhoto.show({
 
 ## 注意
 - 通过this.$refs.VDPhoto.show()来打开组件
-- 演示地址及效果图为0.1.x版本
+- 演示地址及效果图为0.1.x版本  1.x.x版本正在努力完善中
 
 
 # 最后
