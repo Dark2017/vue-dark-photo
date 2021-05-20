@@ -2,7 +2,6 @@
 
 ![demo1.gif](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/719521e172f34d75975eb640fa0b841c~tplv-k3u1fbpfcp-watermark.image)
 
-
 ![demo2.gif](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3a8177352ca9441b82111f1b71fc30ab~tplv-k3u1fbpfcp-watermark.image)
 
 ![demo3.gif](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/71751a2b6001473a966da349dcc01791~tplv-k3u1fbpfcp-watermark.image)
@@ -12,12 +11,9 @@ https://dark2017.github.io/vue-dark-photo.github.io/
 
 # vue-dark-photo
 
-- 基于 element-ui2.x 开发的预览图片组件
-- 支持 放大、缩小、复原、下载、打印等功能
-- 支持在线预览pdf、word等文档（这个功能后续可能会去掉）
+- 基于 vue2.x 开发的预览图片组件
+- 支持 放大、缩小、复原、下载、打印、旋转、拖拽等功能
 - 支持png、jpg、jpge、bmp、gif等常见格式
-- 继承 el-dialog 等组件的属性事件等
-- 适合使用了element-ui的项目
 - GitHub地址：https://github.com/Dark2017/vue-dark-photo.git
 
 # 安装使用说明
@@ -29,8 +25,6 @@ npm i vue-dark-photo
 import VDPhoto from 'vue-dark-photo'
 // 引入vue-dark-photo 样式
 import 'vue-dark-photo/lib/vue-dark-photo.css'
-// 引入element 样式
-import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.use(VDPhoto)
 
@@ -77,13 +71,13 @@ this.$VDPhoto.show({
 | imgData | string | 图片地址(url) | -
 | imgName | string | 图片名称 | -
 | title | string | 标题 | -
-| width | string | 弹窗宽度 | 50%
 | ··· | ··· | ···
 
 ## 事件
 | 事件名 |  说明 | 回调参数
 | --- | --- | ---
 | publish | 打印后的回调 | 打印的内容
+| close | 关闭后的回调 | -
 | ··· | ··· | ···
 
 ## 方法
@@ -100,8 +94,9 @@ this.$VDPhoto.show({
 
 
 ## 注意
-- el-dialog的属性及方法等也可以使用具体可移至：https://element.eleme.cn/#/zh-CN/component/dialog
-- 该组件中visible属性建议不要使用以免产生不必要的BUG，通过this.$refs.VDPhoto.show()来打开组件
+- 通过this.$refs.VDPhoto.show()来打开组件
+- 演示地址及效果图为0.1.x版本
+
 
 # 最后
 
@@ -115,6 +110,7 @@ this.$VDPhoto.show({
 
 - 2021-5-20
 - 解耦elementui、引用阿里图标库
+- 去除word等文档预览功能
 
 - 2021-5-17
 - 支持更多图片格式、代码优化
