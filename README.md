@@ -13,7 +13,9 @@ https://dark2017.github.io/vue-dark-photo.github.io/
 
 - 基于 vue2.x 开发的预览图片组件
 - 支持 放大、缩小、复原、下载、打印、旋转、拖拽等功能
-- 支持png、jpg、jpge、bmp、gif等常见格式
+- 支持png、jpg、jpge、bmp、gif等常见图片格式
+- 支持查看多个图片
+- 开箱即用 只需传图片数据 轻便简单
 - GitHub地址：https://github.com/Dark2017/vue-dark-photo.git
 
 # 安装使用说明
@@ -43,7 +45,6 @@ https://cdn.jsdelivr.net/npm/vue-dark-photo@{verison}/lib/vue-dark-photo.css
 ```
 this.$VDPhoto.show({
     imgData: "url",
-    imgName: '图片名',
     title: 'title',
 });
 
@@ -54,7 +55,6 @@ this.$VDPhoto.show({
 <VDPhoto 
     ref="VDPhoto"
     :imgData='imgData'
-    :imgName='imgName'
     :title='title'
     @publish='publish'
     ....
@@ -69,16 +69,13 @@ this.$VDPhoto.show({
 | 属性值 |  类型 | 描述 | 默认值 | 
 | --- | --- | --- | ---
 | imgData | string | 图片地址(url) | -
-| imgName | string | 图片名称 | -
-| title | string | 标题 | -
-| ··· | ··· | ···
+| imgArr | Array | 图片地址(数组) | -
 
 ## 事件
 | 事件名 |  说明 | 回调参数
 | --- | --- | ---
 | publish | 打印后的回调 | 打印的内容
 | close | 关闭后的回调 | -
-| ··· | ··· | ···
 
 ## 方法
 | 方法名 |  说明 | 
@@ -86,17 +83,12 @@ this.$VDPhoto.show({
 | show | 打开photo | 
 | ··· | ··· | 
 
-## 插槽
-| 插槽名 |  说明 | 
-| --- | --- | 
-| - | 图片下面的内容 | 
-| ··· | ··· | 
-
 
 ## 注意
 - 通过this.$refs.VDPhoto.show()来打开组件
 - 演示地址及效果图为0.1.x版本
-
+- 若引用图片地址，相对地址使用require()包裹或使用绝对地址
+- 若imgData 和 imgArr 同时传了 则只有imgData生效
 
 # 最后
 
@@ -107,6 +99,10 @@ this.$VDPhoto.show({
 - csdn | 掘金 | 知乎 同名： 饼干_  或  饼干 
 
 # 更新日志
+
+- 2021-5-21
+- 新增图片数组功能；移除默认插槽和图片名
+- 下载时截取文件名作为图片名
 
 - 2021-5-20
 - 解耦elementui、引用阿里图标库
