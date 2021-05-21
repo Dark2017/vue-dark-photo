@@ -68,15 +68,8 @@ this.$VDPhoto.show({
 
 | 属性值 |  类型 | 描述 | 默认值 | 
 | --- | --- | --- | ---
-<<<<<<< HEAD
-| imgData | string | 图片地址(url) 相对路径需用require() | -
-| imgName | string | 图片名称 | -
-| title | string | 标题 | -
-| ··· | ··· | ···
-=======
 | imgData | string | 图片地址(url) | -
 | imgArr | Array | 图片地址(数组) | -
->>>>>>> dev
 
 ## 事件
 | 事件名 |  说明 | 回调参数
