@@ -10,16 +10,24 @@
     v-bind="$attrs"
     v-on="$listeners"
   >
-    <div slot="title" class="title">{{ title }}</div>
     <section class="header-photo" slot="footer">
       <div class="head-content">
         <div class="tools-wrap">
           <div class="photo-tools">
+            <abbr title="上一张" v-if="!imgData && imgArr.length >= 2">
+              <span
+                @click="left"
+                class="iconfont icon-arrow-left-bold icon"
+              ></span>
+            </abbr>
             <abbr title="缩小">
               <span @click="narrow" class="iconfont icon-zoom-in icon"></span>
             </abbr>
             <abbr title="实际大小">
-              <span @click="reduction" class="iconfont icon-fullscreen-expand icon-browse icon"></span>
+              <span
+                @click="reduction"
+                class="iconfont icon-fullscreen-expand icon"
+              ></span>
             </abbr>
             <abbr title="放大">
               <span @click="enlarge" class="iconfont icon-zoom-out icon"></span>
@@ -29,12 +37,18 @@
             </abbr>
             <abbr title="下载">
               <span
-                @click="downloadFile(imgData)"
+                @click="downloadFile(currentImg)"
                 class="iconfont icon-download icon"
               ></span>
-            </abbr>            
+            </abbr>
             <abbr title="打印">
               <span class="iconfont icon-print icon" @click="publish"></span>
+            </abbr>
+            <abbr title="下一张" v-if="!imgData && imgArr.length >= 2">
+              <span
+                @click="right"
+                class="iconfont icon-arrow-right-bold icon"
+              ></span>
             </abbr>
           </div>
         </div>
@@ -49,18 +63,16 @@
         v-if="isImg"
         ref="imgBox"
         @mousedown="down"
-        @mousewheel='mouseWheel'
-        :src="imgData"
+        @mousewheel="mouseWheel"
+        :src="currentImg"
         :style="{
           transform: `translateX(${activeImg.x + 'px'}) translateY(${
             activeImg.y + 'px'
           }) scale(${activeImg.scale}) rotate(${activeImg.rotate}deg)`,
         }"
       />
-      <slot></slot>
       <!--endprint-->
     </section>
-
   </windows>
 </template>
 
@@ -72,7 +84,7 @@ import { suffix_photo_list } from "./utils/constart";
 export default {
   name: "VDPhoto",
   components: {
-    windows
+    windows,
   },
   props: {
     // 图片数据
@@ -80,16 +92,11 @@ export default {
       type: String,
       default: "",
     },
-    // 图片名
-    imgName: {
-      type: String,
-      default: "",
+    // 图片数组
+    imgArr: {
+      type: Array,
+      default: () => [],
     },
-    // 标题
-    title: {
-      type: String,
-      default: "",
-    }
   },
   data() {
     return {
@@ -101,6 +108,7 @@ export default {
         y: 0,
         rotate: 0,
       },
+      index: 0,
     };
   },
   methods: {
@@ -110,7 +118,24 @@ export default {
     },
     destroy() {
       this.showBox = false;
-      this.reduction()
+      this.$emit("close");
+      this.reduction();
+    },
+    // 上一张
+    left() {
+      if (this.index > 0) {
+        this.index--;
+
+        this.reduction();
+      }
+    },
+    // 下一张
+    right() {
+      if (this.imgArr.length - 1 > this.index) {
+        this.index++;
+
+        this.reduction();
+      }
     },
     // 鼠标按下
     down(e) {
@@ -184,26 +209,20 @@ export default {
     },
     // 滚轮缩放
     mouseWheel(e) {
-      if(e.deltaY > 0) {
-        this.enlarge()
+      if (e.deltaY > 0) {
+        this.enlarge();
       }
-      if(e.deltaY < 0) {
-        this.narrow()
+      if (e.deltaY < 0) {
+        this.narrow();
       }
     },
     // 下载
     downloadFile(url) {
-      let name;
-      if (!this.imgName) {
-        let tmp = url.lastIndexOf("/");
-        let tmpO = url.lastIndexOf(".");
-        let tmpName = url.substring(tmp + 1, tmpO);
-        name = tmpName;
-      } else {
-        name = this.imgName;
-      }
-      // 下载图片
-      downloadFileByURL(url, name);
+      if (url)
+        downloadFileByURL(
+          url,
+          url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf("."))
+        );
     },
     // 打印
     publish() {
@@ -216,30 +235,38 @@ export default {
     },
   },
   computed: {
-    suffixName() {
+    currentImg() {
+      return this.imgData ? this.imgData : this.imgArr[this.index];
+    },
+    currentLength() {
       return this.imgData
-        .substring(this.idx + 1, this.imgData.length)
-        .toLowerCase();
+        ? this.imgData.length
+        : this.imgArr[this.index].length;
+    },
+    suffixName() {
+      return (
+        this.currentImg &&
+        this.currentImg
+          .substring(this.idx + 1, this.currentLength)
+          .toLowerCase()
+      );
     },
     idx() {
-      return this.imgData.lastIndexOf(".");
+      return this.currentImg.lastIndexOf(".");
     },
     isImg() {
       return suffix_photo_list[this.suffixName];
-    },
+    }
   },
 };
 </script>
 
 
 <style lang="less" scoped>
-@import './style/index.css';
-abbr[title]{
+@import "./style/index.css";
+abbr[title] {
   border-bottom: none !important;
   text-decoration: none !important;
-}
-.title {
-  text-align: center;
 }
 .header-photo {
   width: 100%;
@@ -257,7 +284,7 @@ abbr[title]{
       height: inherit;
       padding: 0 22px;
 
-      .icon{
+      .icon {
         color: #fff;
         opacity: 0.5;
         font-size: 26px;
