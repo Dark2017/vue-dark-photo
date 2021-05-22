@@ -33,8 +33,11 @@
             <abbr title="放大">
               <span @click="enlarge" class="iconfont icon-zoom-out icon"></span>
             </abbr>
-            <abbr title="旋转">
-              <span @click="rotate" class="iconfont icon-refresh icon"></span>
+            <abbr title="逆时针旋转">
+              <span @click="rotate('right')" style="transform: rotateY(180deg); display: inline-block;" class="iconfont icon-refresh icon"></span>
+            </abbr>
+            <abbr title="顺时针旋转">
+              <span @click="rotate('left')" class="iconfont icon-refresh icon"></span>
             </abbr>
             <abbr title="下载">
               <span
@@ -70,6 +73,7 @@
           transform: `translateX(${activeImg.x + 'px'}) translateY(${
             activeImg.y + 'px'
           }) scale(${activeImg.scale}) rotate(${activeImg.rotate}deg)`,
+          transition: `${openAnime && transition} 0.3s linear`
         }"
       />
       <!--endprint-->
@@ -113,6 +117,11 @@ export default {
     isHint: {
       type: Boolean,
       default: true
+    },
+    // 是否需要过渡动画
+    isAnimation: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -128,7 +137,10 @@ export default {
       },
       index: 0,
       title: '',
-      extreme: false
+      extreme: false,
+      // 旋转动画持续时间
+      time: '0.3s',
+      openAnime: true
     };
   },
   methods: {
@@ -145,6 +157,7 @@ export default {
     left() {
       if (this.index > 0) {
         this.index--;
+        this.openAnime = false
 
         this.reduction();
       } else {
@@ -155,6 +168,7 @@ export default {
     right() {
       if (this.imgArr.length - 1 > this.index) {
         this.index++;
+        this.openAnime = false
 
         this.reduction();
       } else {
@@ -218,17 +232,18 @@ export default {
     },
     // 还原
     reduction() {
+      this.openAnime = false
       this.activeImg.scale = 1;
       this.activeImg.x = 0;
       this.activeImg.y = 0;
       this.activeImg.rotate = 0;
     },
     // 旋转
-    rotate() {
+    rotate(direction) {
       let rotate = this.activeImg.rotate;
 
-      rotate += 90;
-
+      rotate += direction==='left'?90:-90;
+      this.openAnime = true
       this.activeImg.rotate = rotate;
     },
     // 滚轮缩放
@@ -280,6 +295,9 @@ export default {
     },
     isImg() {
       return suffix_photo_list[this.suffixName];
+    },
+    transition() {
+      return this.isAnimation?'all':'none'
     }
   },
 };

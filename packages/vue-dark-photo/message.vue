@@ -50,7 +50,7 @@ export default {
         this.time = setTimeout(() => {
           this.time = null;
           this.isExtreme = false;
-        }, 1500);
+        }, 1200);
       }
     },
   },
