@@ -7,6 +7,7 @@
       :imgArr="imgArr"
       @publish="publish"
       @close="close"
+      :isHint="true"
     >
     </VDPhoto>
   </div>

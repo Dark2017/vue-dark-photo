@@ -81,7 +81,7 @@
       ref="message"
       :title="title"
       :extreme="extreme"
-      :isSwitch="isSwitch"/>
+      :isHint="isHint"/>
 </div>
 
 </template>
@@ -110,7 +110,7 @@ export default {
       default: () => [],
     },
     // 是否展示提示
-    isSwitch: {
+    isHint: {
       type: Boolean,
       default: true
     }

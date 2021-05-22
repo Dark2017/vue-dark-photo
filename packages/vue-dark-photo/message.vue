@@ -1,6 +1,6 @@
 <template>
   <div
-    v-show="isExtreme && isSwitch"
+    v-show="isExtreme && isHint"
     id="message"
     :class="['msg', icon!=''? `iconfont ${icon} icon`:icon]"
     :style="{'color':color, 'backgroundColor':bgColor}"
@@ -14,7 +14,7 @@ export default {
   name: "message",
   props: {
     // 是否展示提示
-    isSwitch: {
+    isHint: {
       type: Boolean,
       default: true,
     },
