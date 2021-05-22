@@ -14,3 +14,7 @@ export const suffix_wps_list = {
 	'pdf': 5
 }
 
+export const message_text = {
+  'first' :'已经是第一张了!',
+  'last' : '这是最后一张了!'
+}

@@ -4,6 +4,7 @@
  * @Description : VDPhoto 组件
 -->
 <template>
+<div>
   <windows
     :visible="showBox"
     @close="destroy"
@@ -73,18 +74,28 @@
       />
       <!--endprint-->
     </section>
+
   </windows>
+  
+    <message
+      ref="message"
+      :title="title"
+      :extreme="extreme"/>
+</div>
+
 </template>
 
 <script>
 import { downloadFileByURL } from "./utils/download";
 import windows from "./windows";
+import message from "./message";
 import print from "./utils/print";
-import { suffix_photo_list } from "./utils/constart";
+import { suffix_photo_list, message_text } from "./utils/constart";
 export default {
   name: "VDPhoto",
   components: {
     windows,
+    message
   },
   props: {
     // 图片数据
@@ -101,6 +112,7 @@ export default {
   data() {
     return {
       showBox: false,
+      message_show: false,
       // 当前图片变换参数
       activeImg: {
         scale: 1,
@@ -109,6 +121,8 @@ export default {
         rotate: 0,
       },
       index: 0,
+      title: '',
+      extreme: false
     };
   },
   methods: {
@@ -127,6 +141,8 @@ export default {
         this.index--;
 
         this.reduction();
+      } else {
+        this.$refs.message.messageShow(message_text['first'])
       }
     },
     // 下一张
@@ -135,6 +151,8 @@ export default {
         this.index++;
 
         this.reduction();
+      } else {
+        this.$refs.message.messageShow(message_text['last'])
       }
     },
     // 鼠标按下
