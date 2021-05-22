@@ -4,7 +4,7 @@
 
 ![demo2 .gif](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5cfe5a9e79ed441c8e071838a0261bac~tplv-k3u1fbpfcp-watermark.image)
 
-![demo3.gif](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fb97030f74a14681978c5d379a62f02b~tplv-k3u1fbpfcp-watermark.image)
+![demo3.gif](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8811becae81549dbbb882133eeab5426~tplv-k3u1fbpfcp-watermark.image)
 
 # 演示地址
 https://dark2017.github.io/vue-dark-photo.github.io/
