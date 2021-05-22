@@ -45,7 +45,6 @@ https://cdn.jsdelivr.net/npm/vue-dark-photo@{verison}/lib/vue-dark-photo.css
 ```
 this.$VDPhoto.show({
     imgData: "url",
-    title: 'title',
 });
 
 ```
@@ -55,7 +54,6 @@ this.$VDPhoto.show({
 <VDPhoto 
     ref="VDPhoto"
     :imgData='imgData'
-    :title='title'
     @publish='publish'
     ....
 />
@@ -87,7 +85,6 @@ this.$VDPhoto.show({
 
 ## 注意
 - 通过this.$refs.VDPhoto.show()来打开组件
-- 演示地址及效果图为0.1.x版本
 - 若引用图片地址，相对地址使用require()包裹或使用绝对地址
 - 若imgData 和 imgArr 同时传了 则只有imgData生效
 

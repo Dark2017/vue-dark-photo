@@ -4,90 +4,71 @@
  * @Description : VDPhoto 组件
 -->
 <template>
-<div>
-  <windows
-    :visible="showBox"
-    @close="destroy"
-    v-bind="$attrs"
-    v-on="$listeners"
-  >
-    <section class="header-photo" slot="footer">
-      <div class="head-content">
-        <div class="tools-wrap">
-          <div class="photo-tools">
-            <abbr title="上一张" v-if="!imgData && imgArr.length >= 2">
-              <span
-                @click="left"
-                class="iconfont icon-arrow-left-bold icon"
-              ></span>
-            </abbr>
-            <abbr title="缩小">
-              <span @click="narrow" class="iconfont icon-zoom-in icon"></span>
-            </abbr>
-            <abbr title="实际大小">
-              <span
-                @click="reduction"
-                class="iconfont icon-fullscreen-expand icon"
-              ></span>
-            </abbr>
-            <abbr title="放大">
-              <span @click="enlarge" class="iconfont icon-zoom-out icon"></span>
-            </abbr>
-            <abbr title="逆时针旋转">
-              <span @click="rotate('right')" style="transform: rotateY(180deg); display: inline-block;" class="iconfont icon-refresh icon"></span>
-            </abbr>
-            <abbr title="顺时针旋转">
-              <span @click="rotate('left')" class="iconfont icon-refresh icon"></span>
-            </abbr>
-            <abbr title="下载">
-              <span
-                @click="downloadFile(currentImg)"
-                class="iconfont icon-download icon"
-              ></span>
-            </abbr>
-            <abbr title="打印">
-              <span class="iconfont icon-print icon" @click="publish"></span>
-            </abbr>
-            <abbr title="下一张" v-if="!imgData && imgArr.length >= 2">
-              <span
-                @click="right"
-                class="iconfont icon-arrow-right-bold icon"
-              ></span>
-            </abbr>
+  <div>
+    <windows :visible="showBox" @close="destroy" v-bind="$attrs" v-on="$listeners">
+      <section class="header-photo" slot="footer">
+        <div class="head-content">
+          <div class="tools-wrap">
+            <div class="photo-tools">
+              <abbr title="上一张" v-if="!imgData && imgArr.length >= 2">
+                <span @click="left" class="iconfont icon-arrow-left-bold icon"></span>
+              </abbr>
+              <abbr title="缩小">
+                <span @click="narrow" class="iconfont icon-zoom-in icon"></span>
+              </abbr>
+              <abbr title="实际大小">
+                <span @click="reduction" class="iconfont icon-fullscreen-expand icon"></span>
+              </abbr>
+              <abbr title="放大">
+                <span @click="enlarge" class="iconfont icon-zoom-out icon"></span>
+              </abbr>
+              <abbr title="逆时针旋转">
+                <span
+                  @click="rotate('right')"
+                  style="transform: rotateY(180deg); display: inline-block;"
+                  class="iconfont icon-refresh icon"
+                ></span>
+              </abbr>
+              <abbr title="顺时针旋转">
+                <span @click="rotate('left')" class="iconfont icon-refresh icon"></span>
+              </abbr>
+              <abbr title="下载">
+                <span @click="downloadFile(currentImg)" class="iconfont icon-download icon"></span>
+              </abbr>
+              <abbr title="打印">
+                <span class="iconfont icon-print icon" @click="publish"></span>
+              </abbr>
+              <abbr title="下一张" v-if="!imgData && imgArr.length >= 2">
+                <span @click="right" class="iconfont icon-arrow-right-bold icon"></span>
+              </abbr>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="content">
-      <!--startprint-->
-      <img
-        class="img"
-        alt
-        v-if="isImg"
-        ref="imgBox"
-        @mousedown="down"
-        @mousewheel="mouseWheel"
-        :src="currentImg"
-        :style="{
+      <section class="content">
+        <!--startprint-->
+        <img
+          class="img"
+          alt
+          v-if="isImg"
+          ref="imgBox"
+          @mousedown="down"
+          @mousewheel="mouseWheel"
+          :src="currentImg"
+          :style="{
           transform: `translateX(${activeImg.x + 'px'}) translateY(${
             activeImg.y + 'px'
           }) scale(${activeImg.scale}) rotate(${activeImg.rotate}deg)`,
           transition: `${openAnime && transition} 0.3s linear`
         }"
-      />
-      <!--endprint-->
-    </section>
+        />
+        <!--endprint-->
+      </section>
+    </windows>
 
-  </windows>
-  
-    <message
-      ref="message"
-      :title="title"
-      :extreme="extreme"
-      :isHint="isHint"/>
-</div>
-
+    <message ref="message" :title="title" :extreme="extreme" :isHint="isHint" />
+  </div>
 </template>
 
 <script>
@@ -100,7 +81,7 @@ export default {
   name: "VDPhoto",
   components: {
     windows,
-    message
+    message,
   },
   props: {
     // 图片数据
@@ -116,13 +97,13 @@ export default {
     // 是否展示提示
     isHint: {
       type: Boolean,
-      default: true
+      default: true,
     },
     // 是否需要过渡动画
     isAnimation: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   data() {
     return {
@@ -136,11 +117,11 @@ export default {
         rotate: 0,
       },
       index: 0,
-      title: '',
+      title: "",
       extreme: false,
       // 旋转动画持续时间
-      time: '0.3s',
-      openAnime: true
+      time: "0.3s",
+      openAnime: true,
     };
   },
   methods: {
@@ -157,22 +138,22 @@ export default {
     left() {
       if (this.index > 0) {
         this.index--;
-        this.openAnime = false
+        this.openAnime = false;
 
         this.reduction();
       } else {
-        this.$refs.message.messageShow(message_text['first'])
+        this.$refs.message.messageShow(message_text["first"]);
       }
     },
     // 下一张
     right() {
       if (this.imgArr.length - 1 > this.index) {
         this.index++;
-        this.openAnime = false
+        this.openAnime = false;
 
         this.reduction();
       } else {
-        this.$refs.message.messageShow(message_text['last'])
+        this.$refs.message.messageShow(message_text["last"]);
       }
     },
     // 鼠标按下
@@ -232,7 +213,7 @@ export default {
     },
     // 还原
     reduction() {
-      this.openAnime = false
+      this.openAnime = false;
       this.activeImg.scale = 1;
       this.activeImg.x = 0;
       this.activeImg.y = 0;
@@ -242,8 +223,8 @@ export default {
     rotate(direction) {
       let rotate = this.activeImg.rotate;
 
-      rotate += direction==='left'?90:-90;
-      this.openAnime = true
+      rotate += direction === "left" ? 90 : -90;
+      this.openAnime = true;
       this.activeImg.rotate = rotate;
     },
     // 滚轮缩放
@@ -297,8 +278,8 @@ export default {
       return suffix_photo_list[this.suffixName];
     },
     transition() {
-      return this.isAnimation?'all':'none'
-    }
+      return this.isAnimation ? "all" : "none";
+    },
   },
 };
 </script>
