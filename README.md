@@ -1,10 +1,10 @@
 # 先上效果图
 
-![demo1.gif](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/719521e172f34d75975eb640fa0b841c~tplv-k3u1fbpfcp-watermark.image)
+![demo1.gif](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3248bfb1e99e4e798c8fdb60cdf1dfbc~tplv-k3u1fbpfcp-watermark.image)
 
-![demo2.gif](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3a8177352ca9441b82111f1b71fc30ab~tplv-k3u1fbpfcp-watermark.image)
+![demo2 .gif](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5cfe5a9e79ed441c8e071838a0261bac~tplv-k3u1fbpfcp-watermark.image)
 
-![demo3.gif](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/71751a2b6001473a966da349dcc01791~tplv-k3u1fbpfcp-watermark.image)
+![demo3.gif](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fb97030f74a14681978c5d379a62f02b~tplv-k3u1fbpfcp-watermark.image)
 
 # 演示地址
 https://dark2017.github.io/vue-dark-photo.github.io/
@@ -100,6 +100,7 @@ this.$VDPhoto.show({
 - csdn | 掘金 | 知乎 同名： 饼干_  或  饼干 
 
 # 更新日志
+
 - 2021-5-22
 - 新增提示功能
 - 添加图片旋转动画
