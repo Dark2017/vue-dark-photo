@@ -80,7 +80,8 @@
     <message
       ref="message"
       :title="title"
-      :extreme="extreme"/>
+      :extreme="extreme"
+      :isSwitch="isSwitch"/>
 </div>
 
 </template>
@@ -108,6 +109,11 @@ export default {
       type: Array,
       default: () => [],
     },
+    // 是否展示提示
+    isSwitch: {
+      type: Boolean,
+      default: true
+    }
   },
   data() {
     return {

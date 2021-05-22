@@ -1,6 +1,6 @@
 <template>
   <div
-    v-show="show && isSwitch"
+    v-show="isExtreme && isSwitch"
     id="message"
     :class="['msg', icon!=''? `iconfont ${icon} icon`:icon]"
     :style="{'color':color, 'backgroundColor':bgColor}"
@@ -11,6 +11,7 @@
 
 <script>
 export default {
+  name: "message",
   props: {
     // 是否展示提示
     isSwitch: {
@@ -36,7 +37,6 @@ export default {
   data() {
     return {
       time: null,
-      show: false,
       isExtreme: false,
       title: "",
     };
@@ -44,12 +44,10 @@ export default {
   methods: {
     // 照片到尽头提示
     messageShow(title) {
-      this.title = title;
       if (!this.time) {
-        this.show = true;
+        this.title = title;
         this.isExtreme = true;
         this.time = setTimeout(() => {
-          this.show = false;
           this.time = null;
           this.isExtreme = false;
         }, 1500);
@@ -71,7 +69,7 @@ export default {
   text-align: center;
   opacity: 0;
   z-index: 2021;
-  animation: opacity 1.5s reverse linear;
+  animation: opacity 1.2s reverse linear;
 }
 @keyframes opacity {
   0% {
