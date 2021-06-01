@@ -33,23 +33,26 @@ Vue.use(VDPhoto)
 ```
 
 ```
-//通过cdn引入 以下链接
+//若通过cdn引入 请引入以下链接 版本号自行调整
 https://cdn.jsdelivr.net/npm/vue-dark-photo@{verison}/lib/vue-dark-photo.umd.min.js
 https://cdn.jsdelivr.net/npm/vue-dark-photo@{verison}/lib/vue-dark-photo.css
 
 ```
 # 示例
 
-## 调用全局方法打开(适合简单使用)
+## 调用全局方法打开
 
 ```
 this.$VDPhoto.show({
     imgData: "url",
+    publish: (val) => {
+        console.log(val)
+    }
 });
 
 ```
 
-## 组件形式打开(适合需要额外功能)
+## 组件形式打开
 ```
 <VDPhoto 
     ref="VDPhoto"
@@ -58,6 +61,7 @@ this.$VDPhoto.show({
     ....
 />
 
+this.$refs.VDPhoto.show()
 ```
 
 # api

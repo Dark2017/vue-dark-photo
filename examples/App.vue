@@ -27,15 +27,15 @@ export default {
         require("../public/logo.png"),
       ],
       customAction: {
-        narrow: false,
-        reduction: false,
-        enlarge: false,
-        leftRotate: false,
-        rightRotate: false,
-        downloadFile: false,
-        publish: false,
-        mousewheel: false,
-        mouseDown: false,
+        // narrow: false,
+        // reduction: false,
+        // enlarge: false,
+        // leftRotate: false,
+        // rightRotate: false,
+        // downloadFile: false,
+        // publish: false,
+        // mousewheel: false,
+        // mouseDown: false,
         custom:[
           {
             title: '自定义操作',
@@ -59,8 +59,10 @@ export default {
       this.$VDPhoto.show({
         imgData: require("../public/logo.png"),
         // imgArr: this.imgArr,
-        title: "图片",
-        customAction: this.customAction
+        customAction: this.customAction,
+        publish: (val) => {
+          console.log(val,'-val--');
+        }
       });
     },
     close(val) {
