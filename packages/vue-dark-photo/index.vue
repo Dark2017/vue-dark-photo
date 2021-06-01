@@ -10,35 +10,42 @@
         <div class="head-content">
           <div class="tools-wrap">
             <div class="photo-tools">
-              <abbr title="上一张" v-if="!imgData && imgArr.length >= 2">
+              <abbr title="上一张" v-if="lastCard">
                 <span @click="left" class="iconfont icon-arrow-left-bold icon"></span>
               </abbr>
-              <abbr title="缩小">
+              <abbr title="缩小" v-if="currentAction.narrow">
                 <span @click="narrow" class="iconfont icon-zoom-in icon"></span>
               </abbr>
-              <abbr title="实际大小">
+              <abbr title="实际大小" v-if="currentAction.reduction">
                 <span @click="reduction" class="iconfont icon-fullscreen-expand icon"></span>
               </abbr>
-              <abbr title="放大">
+              <abbr title="放大" v-if="currentAction.enlarge">
                 <span @click="enlarge" class="iconfont icon-zoom-out icon"></span>
               </abbr>
-              <abbr title="逆时针旋转">
+              <abbr title="逆时针旋转" v-if="currentAction.leftRotate">
                 <span
                   @click="rotate('right')"
                   style="transform: rotateY(180deg); display: inline-block;"
                   class="iconfont icon-refresh icon"
                 ></span>
               </abbr>
-              <abbr title="顺时针旋转">
+              <abbr title="顺时针旋转" v-if="currentAction.rightRotate">
                 <span @click="rotate('left')" class="iconfont icon-refresh icon"></span>
               </abbr>
-              <abbr title="下载">
+              <abbr title="下载" v-if="currentAction.downloadFile">
                 <span @click="downloadFile(currentImg)" class="iconfont icon-download icon"></span>
               </abbr>
-              <abbr title="打印">
+              <abbr title="打印" v-if="currentAction.publish">
                 <span class="iconfont icon-print icon" @click="publish"></span>
               </abbr>
-              <abbr title="下一张" v-if="!imgData && imgArr.length >= 2">
+              <template v-if="currentAction.custom">
+                <abbr v-for="(item, key) in currentAction.custom" :title="item.title">
+                  <span @click="item.onClick" :style="item.style">
+                    {{ item.content }}
+                  </span>
+                </abbr>
+              </template>
+              <abbr title="下一张" v-if="nextCard">
                 <span @click="right" class="iconfont icon-arrow-right-bold icon"></span>
               </abbr>
             </div>
@@ -104,6 +111,11 @@ export default {
       type: Boolean,
       default: true,
     },
+    // 自定义操作栏
+    customAction: {
+      type: Object,
+      default: null
+    }
   },
   data() {
     return {
@@ -122,6 +134,20 @@ export default {
       // 旋转动画持续时间
       time: "0.3s",
       openAnime: true,
+      // 默认操作栏配置
+      defaultAction: {
+        lastCard: true,
+        narrow: true,
+        reduction: true,
+        enlarge: true,
+        leftRotate: true,
+        rightRotate: true,
+        downloadFile: true,
+        publish: true,
+        nextCard: true,
+        mouseDown: true,
+        mousewheel: true
+      }
     };
   },
   methods: {
@@ -158,6 +184,7 @@ export default {
     },
     // 鼠标按下
     down(e) {
+      if(!this.currentAction.mouseDown) return
       let downX = e.pageX;
 
       let downY = e.pageY;
@@ -189,6 +216,7 @@ export default {
     },
     // 放大
     enlarge() {
+      if(!this.currentAction.mousewheel) return
       let scale = this.activeImg.scale;
 
       scale += 0.1;
@@ -201,6 +229,7 @@ export default {
     },
     // 缩小
     narrow() {
+      if(!this.currentAction.mousewheel) return
       let scale = this.activeImg.scale;
 
       scale -= 0.1;
@@ -280,6 +309,15 @@ export default {
     transition() {
       return this.isAnimation ? "all" : "none";
     },
+    currentAction() {
+      return this.customAction ? Object.assign(this.defaultAction, this.customAction) : this.defaultAction
+    },
+    lastCard() {
+      return !this.imgData && this.imgArr.length >= 2 && this.currentAction.lastCard
+    },
+    nextCard() {
+      return !this.imgData && this.imgArr.length >= 2 && this.currentAction.nextCard
+    }
   },
 };
 </script>

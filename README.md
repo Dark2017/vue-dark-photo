@@ -69,14 +69,43 @@ this.$VDPhoto.show({
 | imgData | string | 图片地址(url) | -
 | imgArr | Array | 图片地址(数组) | -
 | isHint | Boolean | 是否展示提示(第一张或最后一张) | true
+| customAction | Object | 自定义操作栏 | null
+
+## customAction
+
+| 属性值 |  类型 | 描述 | 默认值 | 
+| --- | --- | --- | ---
+| lastCard | Boolean | 是否需要上一张 | true
+| narrow | Boolean | 是否需要缩小 | true
+| reduction | Boolean | 是否需要复原 | true
+| enlarge | Boolean | 是否需要放大 | true
+| leftRotate | Boolean | 是否需要逆时针旋转 | true
+| rightRotate | Boolean | 是否需要顺时针旋转 | true
+| downloadFile | Boolean | 是否需要下载 | true
+| publish | Boolean | 是否需要打印 | true
+| nextCard | Boolean | 是否需要下一张 | true
+| mousewheel | Boolean | 是否需要滚轮缩放 | true
+| mouseDown | Boolean | 是否需要拖拽功能 | true
+| custom | Array | 自定义操作栏 | -
+
+## custom
+
+| 属性值 |  类型 | 描述 | 默认值 | 
+| --- | --- | --- | ---
+| title | String | 悬浮标题 | -
+| onClick | function | 点击回调 | -
+| style | Object | 操作按钮样式 | -
+| content | String | 操作按钮内容 | -
 
 ## 事件
+
 | 事件名 |  说明 | 回调参数
 | --- | --- | ---
 | publish | 打印后的回调 | 打印的内容
 | close | 关闭后的回调 | -
 
 ## 方法
+
 | 方法名 |  说明 | 
 | --- | --- | 
 | show | 打开photo | 
@@ -84,6 +113,7 @@ this.$VDPhoto.show({
 
 
 ## 注意
+
 - 通过this.$refs.VDPhoto.show()来打开组件
 - 若引用图片地址，相对地址使用require()包裹或使用绝对地址
 - 若imgData 和 imgArr 同时传了 则只有imgData生效
@@ -97,6 +127,8 @@ this.$VDPhoto.show({
 - csdn | 掘金 | 知乎 同名： 饼干_  或  饼干 
 
 # 更新日志
+- 2021-6-1
+- 新增自定义操作栏
 
 - 2021-5-22
 - 新增提示功能

@@ -7,6 +7,7 @@
       :imgArr="imgArr"
       @publish="publish"
       @close="close"
+      :customAction='customAction'
     >
     </VDPhoto>
   </div>
@@ -25,6 +26,29 @@ export default {
         require("../public/demo1.gif"),
         require("../public/logo.png"),
       ],
+      customAction: {
+        narrow: false,
+        reduction: false,
+        enlarge: false,
+        leftRotate: false,
+        rightRotate: false,
+        downloadFile: false,
+        publish: false,
+        mousewheel: false,
+        mouseDown: false,
+        custom:[
+          {
+            title: '自定义操作',
+            onClick: () => {
+              console.log('自定义操作');
+            },
+            style: {
+              'color' : 'white'
+            },
+            content: '11111'
+          }
+        ]
+      }
     };
   },
   methods: {
@@ -36,6 +60,7 @@ export default {
         imgData: require("../public/logo.png"),
         // imgArr: this.imgArr,
         title: "图片",
+        customAction: this.customAction
       });
     },
     close(val) {
