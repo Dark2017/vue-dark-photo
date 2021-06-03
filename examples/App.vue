@@ -8,6 +8,7 @@
       @publish="publish"
       @close="close"
       :customAction='customAction'
+      :ifWave='true'
     >
     </VDPhoto>
   </div>

@@ -5,6 +5,7 @@
 -->
 <template>
   <div>
+    <wave v-if="ifWave"/>
     <windows :visible="showBox" @close="destroy" v-bind="$attrs" v-on="$listeners">
       <section class="header-photo" slot="footer">
         <div class="head-content">
@@ -80,15 +81,17 @@
 
 <script>
 import { downloadFileByURL } from "./utils/download";
-import windows from "./windows";
-import message from "./message";
+import windows from "./components/windows";
+import message from "./components/message";
 import print from "./utils/print";
+import wave from './components/wave'
 import { suffix_photo_list, message_text } from "./utils/constart";
 export default {
   name: "VDPhoto",
   components: {
     windows,
     message,
+    wave
   },
   props: {
     // 图片数据
@@ -115,6 +118,11 @@ export default {
     customAction: {
       type: Object,
       default: null
+    },
+    // 是否点击波纹特效
+    ifWave: {
+      type: Boolean,
+      default: false
     }
   },
   data() {

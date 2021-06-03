@@ -74,6 +74,7 @@ this.$refs.VDPhoto.show()
 | imgArr | Array | 图片地址(数组) | -
 | isHint | Boolean | 是否展示提示(第一张或最后一张) | true
 | customAction | Object | 自定义操作栏 | null
+| ifWave | Boolean | 是否点击波纹特效 | false
 
 ## customAction
 
@@ -131,6 +132,11 @@ this.$refs.VDPhoto.show()
 - csdn | 掘金 | 知乎 同名： 饼干_  或  饼干 
 
 # 更新日志
+
+- 2021-6-3
+- 新增波纹特效
+- 优化项目结构
+
 - 2021-6-1
 - 新增自定义操作栏
 
