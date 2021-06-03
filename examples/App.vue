@@ -34,7 +34,7 @@ export default {
         // rightRotate: false,
         // downloadFile: false,
         // publish: false,
-        // mousewheel: false,
+        // mouseWheel: false,
         // mouseDown: false,
         custom:[
           {

@@ -88,7 +88,7 @@ this.$refs.VDPhoto.show()
 | downloadFile | Boolean | 是否需要下载 | true
 | publish | Boolean | 是否需要打印 | true
 | nextCard | Boolean | 是否需要下一张 | true
-| mousewheel | Boolean | 是否需要滚轮缩放 | true
+| mouseWheel | Boolean | 是否需要滚轮缩放 | true
 | mouseDown | Boolean | 是否需要拖拽功能 | true
 | custom | Array | 自定义操作栏 | -
 

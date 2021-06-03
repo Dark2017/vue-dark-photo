@@ -146,7 +146,7 @@ export default {
         publish: true,
         nextCard: true,
         mouseDown: true,
-        mousewheel: true
+        mouseWheel: true
       }
     };
   },
@@ -216,7 +216,7 @@ export default {
     },
     // 放大
     enlarge() {
-      if(!this.currentAction.mousewheel) return
+      if(!this.currentAction.mouseWheel) return
       let scale = this.activeImg.scale;
 
       scale += 0.1;
@@ -229,7 +229,7 @@ export default {
     },
     // 缩小
     narrow() {
-      if(!this.currentAction.mousewheel) return
+      if(!this.currentAction.mouseWheel) return
       let scale = this.activeImg.scale;
 
       scale -= 0.1;
