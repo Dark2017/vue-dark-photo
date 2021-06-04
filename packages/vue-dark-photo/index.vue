@@ -250,6 +250,8 @@ export default {
     },
     // 还原
     reduction() {
+      if(!this.currentAction.reduction) return
+
       this.openAnime = false;
       this.activeImg.scale = 1;
       this.activeImg.x = 0;
