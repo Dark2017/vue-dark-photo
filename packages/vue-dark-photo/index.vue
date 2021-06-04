@@ -5,49 +5,75 @@
 -->
 <template>
   <div>
-    <wave v-if="ifWave"/>
-    <windows :visible="showBox" @close="destroy" v-bind="$attrs" v-on="$listeners">
+    <wave v-if="ifWave" />
+    <windows
+      :visible="showBox"
+      @close="destroy"
+      v-bind="$attrs"
+      v-on="$listeners"
+    >
       <section class="header-photo" slot="footer">
         <div class="head-content">
           <div class="tools-wrap">
             <div class="photo-tools">
               <abbr title="上一张" v-if="lastCard">
-                <span @click="left" class="iconfont icon-arrow-left-bold icon"></span>
+                <span
+                  @click="left"
+                  class="iconfont icon-arrow-left-bold icon"
+                ></span>
               </abbr>
               <abbr title="缩小" v-if="currentAction.narrow">
                 <span @click="narrow" class="iconfont icon-zoom-in icon"></span>
               </abbr>
               <abbr title="实际大小" v-if="currentAction.reduction">
-                <span @click="reduction" class="iconfont icon-fullscreen-expand icon"></span>
+                <span
+                  @click="reduction"
+                  class="iconfont icon-fullscreen-expand icon"
+                ></span>
               </abbr>
               <abbr title="放大" v-if="currentAction.enlarge">
-                <span @click="enlarge" class="iconfont icon-zoom-out icon"></span>
+                <span
+                  @click="enlarge"
+                  class="iconfont icon-zoom-out icon"
+                ></span>
               </abbr>
               <abbr title="逆时针旋转" v-if="currentAction.leftRotate">
                 <span
                   @click="rotate('right')"
-                  style="transform: rotateY(180deg); display: inline-block;"
+                  style="transform: rotateY(180deg); display: inline-block"
                   class="iconfont icon-refresh icon"
                 ></span>
               </abbr>
               <abbr title="顺时针旋转" v-if="currentAction.rightRotate">
-                <span @click="rotate('left')" class="iconfont icon-refresh icon"></span>
+                <span
+                  @click="rotate('left')"
+                  class="iconfont icon-refresh icon"
+                ></span>
               </abbr>
               <abbr title="下载" v-if="currentAction.downloadFile">
-                <span @click="downloadFile(currentImg)" class="iconfont icon-download icon"></span>
+                <span
+                  @click="downloadFile(currentImg)"
+                  class="iconfont icon-download icon"
+                ></span>
               </abbr>
               <abbr title="打印" v-if="currentAction.publish">
                 <span class="iconfont icon-print icon" @click="publish"></span>
               </abbr>
               <template v-if="currentAction.custom">
-                <abbr v-for="(item, key) in currentAction.custom" :title="item.title">
+                <abbr
+                  v-for="(item, key) in currentAction.custom"
+                  :title="item.title"
+                >
                   <span @click="item.onClick" :style="item.style">
                     {{ item.content }}
                   </span>
                 </abbr>
               </template>
               <abbr title="下一张" v-if="nextCard">
-                <span @click="right" class="iconfont icon-arrow-right-bold icon"></span>
+                <span
+                  @click="right"
+                  class="iconfont icon-arrow-right-bold icon"
+                ></span>
               </abbr>
             </div>
           </div>
@@ -65,11 +91,11 @@
           @mousewheel="mouseWheel"
           :src="currentImg"
           :style="{
-          transform: `translateX(${activeImg.x + 'px'}) translateY(${
-            activeImg.y + 'px'
-          }) scale(${activeImg.scale}) rotate(${activeImg.rotate}deg)`,
-          transition: `${openAnime && transition} 0.3s linear`
-        }"
+            transform: `translateX(${activeImg.x + 'px'}) translateY(${
+              activeImg.y + 'px'
+            }) scale(${activeImg.scale}) rotate(${activeImg.rotate}deg)`,
+            transition: `${openAnime && transition} 0.3s linear`,
+          }"
         />
         <!--endprint-->
       </section>
@@ -84,14 +110,14 @@ import { downloadFileByURL } from "./utils/download";
 import windows from "./components/windows";
 import message from "./components/message";
 import print from "./utils/print";
-import wave from './components/wave'
+import wave from "./components/wave";
 import { suffix_photo_list, message_text } from "./utils/constart";
 export default {
   name: "VDPhoto",
   components: {
     windows,
     message,
-    wave
+    wave,
   },
   props: {
     // 图片数据
@@ -117,13 +143,13 @@ export default {
     // 自定义操作栏
     customAction: {
       type: Object,
-      default: null
+      default: null,
     },
     // 是否点击波纹特效
     ifWave: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
@@ -154,8 +180,8 @@ export default {
         publish: true,
         nextCard: true,
         mouseDown: true,
-        mouseWheel: true
-      }
+        mouseWheel: true,
+      },
     };
   },
   methods: {
@@ -192,7 +218,7 @@ export default {
     },
     // 鼠标按下
     down(e) {
-      if(!this.currentAction.mouseDown) return
+      if (!this.currentAction.mouseDown) return;
       let downX = e.pageX;
 
       let downY = e.pageY;
@@ -224,7 +250,7 @@ export default {
     },
     // 放大
     enlarge() {
-      if(!this.currentAction.mouseWheel) return
+      if (!this.currentAction.mouseWheel) return;
       let scale = this.activeImg.scale;
 
       scale += 0.1;
@@ -237,7 +263,7 @@ export default {
     },
     // 缩小
     narrow() {
-      if(!this.currentAction.mouseWheel) return
+      if (!this.currentAction.mouseWheel) return;
       let scale = this.activeImg.scale;
 
       scale -= 0.1;
@@ -250,7 +276,7 @@ export default {
     },
     // 还原
     reduction() {
-      if(!this.currentAction.reduction) return
+      if (!this.currentAction.reduction) return;
 
       this.openAnime = false;
       this.activeImg.scale = 1;
@@ -320,14 +346,20 @@ export default {
       return this.isAnimation ? "all" : "none";
     },
     currentAction() {
-      return this.customAction ? Object.assign(this.defaultAction, this.customAction) : this.defaultAction
+      return this.customAction
+        ? Object.assign(this.defaultAction, this.customAction)
+        : this.defaultAction;
     },
     lastCard() {
-      return !this.imgData && this.imgArr.length >= 2 && this.currentAction.lastCard
+      return (
+        !this.imgData && this.imgArr.length >= 2 && this.currentAction.lastCard
+      );
     },
     nextCard() {
-      return !this.imgData && this.imgArr.length >= 2 && this.currentAction.nextCard
-    }
+      return (
+        !this.imgData && this.imgArr.length >= 2 && this.currentAction.nextCard
+      );
+    },
   },
 };
 </script>
