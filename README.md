@@ -23,6 +23,7 @@ https://dark2017.github.io/vue-dark-photo.github.io/
 ```
 npm i vue-dark-photo
 
+
 // 在入口（main.js）中引入并挂载
 import VDPhoto from 'vue-dark-photo'
 // 引入vue-dark-photo 样式
