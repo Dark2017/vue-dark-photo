@@ -17,6 +17,7 @@ https://dark2017.github.io/vue-dark-photo.github.io/
 - 支持查看多个图片
 - 开箱即用 只需传图片数据 轻便简单
 - GitHub地址：https://github.com/Dark2017/vue-dark-photo.git
+- react同款：https://github.com/Dark2017/react-dark-photo.git
 
 # 安装使用说明
 [![vue-dark-photo](https://nodei.co/npm/vue-dark-photo.png)](https://npmjs.com/package/vue-dark-photo)
