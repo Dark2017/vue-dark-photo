@@ -1,54 +1,62 @@
 {
-  "name": "vue-dark-photo",
-  "version": "1.4.1",
-  "private": false,
-  "author": "laijianghao",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Dark2017/vue-dark-photo.git"
-  },
-  "license": "MIT",
-  "main": "lib/vue-dark-photo.umd.min.js",
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "lib": "vue-cli-service build --target lib --name vue-dark-photo --dest lib packages/index.js"
-  },
-  "keyword": "vue-dark-photo",
-  "dependencies": {
-    "file-saver": "^2.0.5",
-    "vue": "^2.6.11"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "babel-eslint": "^10.1.0",
-    "babel-plugin-component": "^1.1.1",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "less": "^4.1.1",
-    "less-loader": "^5.0.0",
-    "vue-template-compiler": "^2.6.11"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+	"name": "vue-dark-photo",
+	"version": "1.4.1",
+	"private": false,
+	"author": "laijianghao",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Dark2017/vue-dark-photo.git"
+	},
+	"license": "MIT",
+	"main": "lib/vue-dark-photo.umd.min.js",
+	"scripts": {
+		"serve": "vue-cli-service serve",
+		"build": "vue-cli-service build",
+		"lint": "vue-cli-service lint",
+		"lib": "vue-cli-service build --target lib --name vue-dark-photo --dest lib packages/index.js",
+		"deploy": "node build/build.js"
+	},
+	"keyword": "vue-dark-photo",
+	"dependencies": {
+		"file-saver": "^2.0.5",
+		"vue": "^2.6.11"
+	},
+	"devDependencies": {
+		"@vue/cli-plugin-babel": "~4.5.0",
+		"@vue/cli-plugin-eslint": "~4.5.0",
+		"@vue/cli-service": "~4.5.0",
+		"babel-eslint": "^10.1.0",
+		"babel-plugin-component": "^1.1.1",
+		"eslint": "^6.7.2",
+		"eslint-plugin-vue": "^6.2.2",
+		"less": "^4.1.1",
+		"less-loader": "^5.0.0",
+		"vue-template-compiler": "^2.6.11",
+		"log-symbols": "^4.1.0",
+		"ora": "^5.4.1",
+		"path": "^0.12.7",
+		"shelljs": "^0.8.4",
+		"chalk": "^4.1.1",
+		"fs": "0.0.1-security",
+		"inquirer": "^8.1.1"
+	},
+	"eslintConfig": {
+		"root": true,
+		"env": {
+			"node": true
+		},
+		"extends": [
+			"plugin:vue/essential",
+			"eslint:recommended"
+		],
+		"parserOptions": {
+			"parser": "babel-eslint"
+		},
+		"rules": {}
+	},
+	"browserslist": [
+		"> 1%",
+		"last 2 versions",
+		"not dead"
+	]
 }
