@@ -26,7 +26,7 @@ jobs:
       script:
         - echo "NPM Deploying Started ..."
         - git clone https://${GH_REF}
-        - cd react-dark-photo
+        - cd vue-dark-photo
         - git branch
         - git checkout travis
         - git rebase master
