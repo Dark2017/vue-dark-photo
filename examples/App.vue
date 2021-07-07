@@ -44,7 +44,7 @@ export default {
               console.log('自定义操作');
             },
             style: {
-              'color' : 'white'
+              'color' : 'white' 
             },
             content: '自定义操作'
           }
