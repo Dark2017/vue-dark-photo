@@ -1,37 +1,55 @@
-language : node_js
+language: node_js
 node_js:
- - "10"
- - "9"
+  - "14"
+branchs:
+  only:
+    - master
 install:
-- npm install
+  - echo "install successed"
 os:
- - linux
+  - linux
 
 stages:
- - test
- - name: deploy
+  - test
+  - name: deploy
 
- jobs:
- include:
-   - stage: test
-     script:
-       - node --version
-       - npm --version
-       - echo "Testing Started ..."
-       - npm test
-       - echo "Testing Finished."
+jobs:
+  include:
+    - stage: test
+      script:
+        - node --version
+        - npm --version
+        - echo "Testing Started ..."
+        - npm test
+        - echo "Testing Finished."
+    - stage: deploy
+      script:
+        - echo "NPM Deploying Started ..."
+        - git clone https://${GH_REF}
+        - cd react-dark-photo
+        - git branch
+        - git checkout travis
+        - git rebase master
+        - npm version patch
+        - npm install --registry=https://registry.npm.taobao.org
+        - npm run build
+        - echo "NPM Building Finished."
+      deploy: 
+        provider: npm
+        email: "502342826@qq.com"
+        api_key: "$NPM_TOKEN"
+        skip_cleanup: true
+        on:
+          all_branches: true
+      after_script:
+        - git config user.name "travis"
+        - git config user.email "502342826@qq.com"
+        - git add .
+        - git commit -m "Travis CI Auto Builder"
+        - git status
+        - git push "https://${GH_TOKEN}@${GH_REF}" travis:travis
 
-   - stage: deploy
-     script:
-       - echo "NPM Deploying Started ..."
-       - npm run build
-       - npm version patch
-       - echo "NPM Building Finished."
-
-     deploy:
-       provider: npm
-       email: 502342826@qq.com
-       api_key: "$NPM_TOKEN"
-       skip_cleanup: true
-       on:
-         all_branches: true 
+branches:
+  only:
+    - master
+    
