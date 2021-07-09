@@ -28,8 +28,8 @@ jobs:
         - git clone https://${GH_REF}
         - cd vue-dark-photo
         - git branch
-        - git checkout travis
-        - git rebase master
+        - git checkout master
+        - git pull
         - npm version patch
         - npm install --registry=https://registry.npm.taobao.org
         - npm run lib
@@ -47,7 +47,7 @@ jobs:
         - git add .
         - git commit -m "Travis CI Auto Builder"
         - git status
-        - git push "https://${GH_TOKEN}@${GH_REF}" travis:travis
+        - git push "https://${GH_TOKEN}@${GH_REF}" master:master
 branches:
   only:
     - master
