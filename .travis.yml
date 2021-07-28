@@ -48,4 +48,8 @@ jobs:
         - git commit -m "Travis CI Auto Builder"
         - git status
         - git push "https://${GH_TOKEN}@${GH_REF}" travis:travis
+        - git checkout master
+        - npm version patch
+        - git commit -m "version patch [skip travis]"
+        - git push "https://${GH_TOKEN}@${GH_REF}" master:master
     
