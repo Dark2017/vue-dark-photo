@@ -124,7 +124,7 @@ this.$refs.VDPhoto.show()
 - 通过this.$refs.VDPhoto.show()来打开组件
 - 若引用图片地址，相对地址使用require()包裹或使用绝对地址
 - 若imgData 和 imgArr 同时传了 则只有imgData生效
-
+- 不支持 base64
 # 最后
 
 - 如果对你有帮助，请star一个哦，你的鼓励是我创作的动力
