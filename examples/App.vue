@@ -23,7 +23,7 @@ export default {
       width: "10px",
       title: "test",
       imgArr: [
-        "https://dark2017.github.io/vue-dark-photo.github.io/img/logo.82b9c7a5.png",
+        "https://i.picsum.photos/id/132/300/200.jpg?hmac=2N8jz1dK3-iM_g-_Bl-cJdFysVCuyHtyJ7H0TmAxGVk",
         require("../public/demo1.gif"),
         require("../public/logo.png"),
       ],
