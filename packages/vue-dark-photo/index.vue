@@ -329,6 +329,15 @@ export default {
         : this.imgArr[this.index].length;
     },
     suffixName() {
+      let spacifyIdx = this.currentImg.lastIndexOf("?");
+
+      if (spacifyIdx > 0) {
+        return (
+          this.currentImg &&
+          this.currentImg.substring(this.idx + 1, spacifyIdx).toLowerCase()
+        );
+      }
+
       return (
         this.currentImg &&
         this.currentImg
