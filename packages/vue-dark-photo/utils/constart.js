@@ -1,7 +1,7 @@
 export const suffix_photo_list = {
 	'png': 1,
 	'jpg': 2,
-	'jpge': 3,
+	'jpeg': 3,
 	'bmp': 4,
 	'gif': 5,
 }
