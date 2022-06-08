@@ -11,7 +11,13 @@ const install = (Vue, option) => {
   let currentComponentBox
 
   const initInstance = () => {
-    // 实例化vue实例
+
+    
+if (currentComponentBox) {
+ return;
+}
+    
+// 实例化vue实例
     currentComponentBox = new ComponentBoxInstance()
 
     let componentBoxEl = currentComponentBox.$mount().$el
