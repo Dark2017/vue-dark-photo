@@ -2,7 +2,7 @@
   <transition name="fade">
     <div v-show="visible">
       <div id="bg" ref="bg" class="bg" @click="close"></div>
-      <div ref="windows" class="windows">
+      <div ref="windows" class="windows" :style="`width: ${imageWidthPercent}%`">
         <div class="windows_header">
           <slot name="title" class="title">
             <span>{{ title }}</span>
@@ -33,6 +33,10 @@ export default {
       type: String,
       default: ''
     },
+    imageWidthPercent: {
+      type: Number,
+      default: 50
+    }
   },
   methods: {
     close() {
