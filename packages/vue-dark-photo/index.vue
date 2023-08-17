@@ -321,7 +321,7 @@ export default {
   },
   computed: {
     currentImg() {
-      return this.imgData ? this.imgData : this.imgArr[this.index];
+      return this.imgData ? this.imgData : this.imgArr.length > this.index ? this.imgArr[this.index] : '';
     },
     currentLength() {
       return this.imgData
