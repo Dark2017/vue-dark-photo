@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div v-show="visible">
+    <div v-show="visible" @mousewheel="handleMousewheel">
       <div id="bg" ref="bg" class="bg" @click="close"></div>
       <div ref="windows" class="windows" :style="`width: ${imageWidthPercent}%`">
         <div class="windows_header">
@@ -42,6 +42,9 @@ export default {
     close() {
       this.$emit('update:visible', false)
       this.$emit('close')
+    },
+    handleMousewheel(event) {
+      event.preventDefault()
     }
   }
 }
