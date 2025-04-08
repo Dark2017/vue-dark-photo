@@ -136,6 +136,9 @@ this.$refs.VDPhoto.show()
 
 # 更新日志
 
+- 2025-4-8
+- last update
+
 - 2021-7-7
 - travis 小版本自动部署迭代
 - node 大版本手动迭代版本号
